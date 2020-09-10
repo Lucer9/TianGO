@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./verificate.page.scss'],
 })
 export class VerificatePage implements OnInit {
-
+  code = ["","","",""]
   constructor() { }
-
   ngOnInit() {
   }
 

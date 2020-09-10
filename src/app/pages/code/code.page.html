@@ -1,21 +1,17 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button class="white-button" defaultHref="/"></ion-back-button>
-    </ion-buttons>
-
-  </ion-toolbar>
-</ion-header>
-
-<ion-content color="primary" [fullscreen]="true">
-  <div class="code-wrapper">
+<ion-content color="primary">
+  <div class="header">
+    <div class="left" routerLink="/" routerDirection="back">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      <p>Regresar</p>
+    </div>
+    <div class="right">
+      <!-- <p>Regresar</p>
+      <ion-icon name="chevron-back-outline"></ion-icon> -->
+    </div>
+  </div>
+  <div class="code-wrapper ion-padding">
     <h2>Ingresa tu número</h2>
-
-    <ion-item class="input-tel">
-      <ion-label position="floating">Número Telefonico</ion-label>
-      <ion-input type="tel" maxlength="10"></ion-input>
-    </ion-item>
-
+    <input [(ngModel)]="tel" type="tel" #telInput>
     <button class="red shadow sendbottom" (click)="nextPage()">
       Enviar código
     </button>
