@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'homepage',
     loadChildren: () => import('./pages/homepage/homepage.module').then( m => m.HomepagePageModule)
   },
+  {
+    path: 'prize',
+    loadChildren: () => import('./pages/prize/prize.module').then( m => m.PrizePageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
 
 ];
 
