@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button class="white-button" defaultHref="/code"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" [fullscreen]="true">
+  <div class="code-wrapper">
+    <h2>Ingresa tu código</h2>
+
+    <div class="code-container">
+      <ion-item class="input-con ion-text-center">
+        <ion-input maxlength="1" class="ion-text-right"></ion-input>
+      </ion-item>
+      <ion-item class="input-con">
+        <ion-input maxlength="1" class="ion-text-right"></ion-input>
+      </ion-item>
+      <ion-item class="input-con">
+        <ion-input maxlength="1" class="ion-text-right"></ion-input>
+      </ion-item>
+      <ion-item class="input-con">
+        <ion-input maxlength="1" class="ion-text-right"></ion-input>
+      </ion-item> 
+    </div>
+
+    <button class="red shadow sendbottom">
+      Verificar
+    </button>
+  </div>
+</ion-content>

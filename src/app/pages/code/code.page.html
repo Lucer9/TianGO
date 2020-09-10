@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button class="white-button" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" [fullscreen]="true">
+  <div class="code-wrapper">
+    <h2>Ingresa tu número</h2>
+
+    <ion-item class="input-tel">
+      <ion-label position="floating">Número Telefonico</ion-label>
+      <ion-input type="tel" maxlength="10"></ion-input>
+    </ion-item>
+
+    <button class="red shadow sendbottom" (click)="nextPage()">
+      Enviar código
+    </button>
+  </div>
+</ion-content>
