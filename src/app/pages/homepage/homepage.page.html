@@ -1,5 +1,31 @@
-<ion-content color="primary" [fullscreen]="true">
-  <div class="wrapper">
+<ion-content color="primary">
+  <div class="header">
+    <div class="left">
+      <ion-icon name="qr-code-outline"></ion-icon>
+      <p>Escanéa el código o...</p>
+    </div>
+    <div class="right">
+      <!-- <p>Regresar</p>
+      <ion-icon name="chevron-back-outline"></ion-icon> -->
+    </div>
+  </div>
+  <div class="code-wrapper ">
+
+    <div class="ion-padding">
+      <h2>Busca tu mercado</h2>
+      <input [(ngModel)]="searchWord" class="search" placeholder="Mercado">
+    </div>
+
     
+    <div class="tian-card">
+      <img class="avatar"
+        src="https://uploads.neatorama.com/images/posts/443/111/111443/Baby-Yoda-Memes-to-Brighten-Your-Day_0-x.jpg">
+      <div class="text">
+        <p>Titulo</p>
+        <p class="note">Calle Algo algo asd as da sd as d asdasd as dad</p>
+      </div>
+    </div>
+
+
   </div>
 </ion-content>

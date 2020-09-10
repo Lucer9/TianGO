@@ -17,7 +17,7 @@
       <input [(ngModel)]="code[2]" type="tel" maxlength="1" #telInput>
       <input [(ngModel)]="code[3]" type="tel" maxlength="1" #telInput>
     </div>
-    <button class="red shadow sendbottom" (click)="nextPage()">
+    <button class="red shadow sendbottom" routerLink="/homepage">
       Enviar código
     </button>
   </div>
