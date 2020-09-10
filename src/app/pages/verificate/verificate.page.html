@@ -1,6 +1,6 @@
 <ion-content color="primary">
   <div class="header">
-    <div class="left" routerLink="/" routerDirection="back">
+    <div class="left" routerLink="/code" routerDirection="back">
       <ion-icon name="chevron-back-outline"></ion-icon>
       <p>Regresar</p>
     </div>
@@ -11,7 +11,12 @@
   </div>
   <div class="code-wrapper ion-padding">
     <h2>Ingresa tu número</h2>
-    <ion-input [(ngModel)]="tel" type="tel" ></ion-input>
+    <div class="inputs">
+      <input [(ngModel)]="code[0]" type="tel" maxlength="1" #telInput>
+      <input [(ngModel)]="code[1]" type="tel" maxlength="1" #telInput>
+      <input [(ngModel)]="code[2]" type="tel" maxlength="1" #telInput>
+      <input [(ngModel)]="code[3]" type="tel" maxlength="1" #telInput>
+    </div>
     <button class="red shadow sendbottom" (click)="nextPage()">
       Enviar código
     </button>
