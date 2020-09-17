@@ -10,18 +10,21 @@
     </div>
   </div>
   <div class="code-wrapper ">
-
-    <div class="ion-padding">
-      <h2>Busca tu mercado</h2>
-      <input [(ngModel)]="searchWord" class="search" placeholder="Mercado">
+    <h2 class="padding">Machantes:</h2>
+    <div class="scrollmenu">
+      <div class="item" *ngFor="let item of personas">
+        <img [src]="item.img">
+        <p class="bold">{{item.name}}</p>
+        <p class="dim">{{item.dim}}</p>
+      </div>
     </div>
-
-
-    <div class="tian-card badge" routerLink="/newhome" >
+    <br>
+    <h2 class="padding">Productos pasados:</h2>
+    <div class="tian-card badge">
       <div class="left">
         <img class="avatar"
           src="https://uploads.neatorama.com/images/posts/443/111/111443/Baby-Yoda-Memes-to-Brighten-Your-Day_0-x.jpg">
-          <span class="km">0.1 km</span>
+        <span class="km">0.1 km</span>
       </div>
       <div class="text">
         <p>Titulo</p>

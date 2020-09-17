@@ -13,7 +13,6 @@
 
 input {
   font-size: 18px;
-  padding: 10px 10px 10px 5px;
   display: block;
   width: 100%;
   border: none;
@@ -37,11 +36,17 @@ label {
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
+
+  padding: 5px 10px;
+
 }
 
 input:focus ~ label,
 input:valid ~ label {
-  top: -20px;
+  background-color: white;
+  border-radius: 5px;
+  top: -15px;
+  left: 10px;
   font-size: 14px;
   color: #ec2b38;
 }
