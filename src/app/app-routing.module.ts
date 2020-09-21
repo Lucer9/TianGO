@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'code',
     loadChildren: () => import('./pages/code/code.module').then( m => m.CodePageModule)
   },
@@ -19,8 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/verificate/verificate.module').then( m => m.VerificatePageModule)
   },
   {
-    path: 'homepage',
-    loadChildren: () => import('./pages/homepage/homepage.module').then( m => m.HomepagePageModule)
+    path: 'market',
+    loadChildren: () => import('./pages/market/market.module').then( m => m.MarketPageModule)
   },
   {
     path: 'prize',
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'newhome',
     loadChildren: () => import('./pages/newhome/newhome.module').then( m => m.NewhomePageModule)
+  },
+  {
+    path: 'person-detail',
+    loadChildren: () => import('./pages/person-detail/person-detail.module').then( m => m.PersonDetailPageModule)
   },
 
 ];

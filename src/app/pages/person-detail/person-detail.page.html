@@ -1,30 +1,34 @@
 <ion-content color="primary">
   <div class="header">
-    <div class="left">
-      <ion-icon name="qr-code-outline"></ion-icon>
-      <p>Escanéa el código o...</p>
+    <span class="dimmer"></span>
+
+    <div class="left" routerLink="/newhome">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      <p>Regresar</p>
     </div>
     <div class="right">
       <!-- <p>Regresar</p>
       <ion-icon name="chevron-back-outline"></ion-icon> -->
     </div>
-  </div>
-  <div class="code-wrapper ">
-    <h2 class="padding">Machantes:</h2>
-    <div class="scrollmenu">
-      <div class="item" *ngFor="let item of personas" routerLink="/person-detail">
-        <img [src]="item.img">
-        <p class="bold">{{item.name}}</p>
-        <p class="category">{{item.category}}</p>
+
+
+      <div class="author">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+        <div class="text">
+          <p>Maria antonieta Jimenez Sosa</p>
+          <p class="note">Frutas y Verduras</p>
+        </div>
       </div>
-    </div>
-    <br>
-    <h2 class="padding">Productos pasados:</h2>
-    <div class="tian-card user-badge" *ngFor="let item of products; let i=index">
+
+  </div>
+
+
+
+  <div class="code-wrapper ">
+
+    <div class="tian-card" *ngFor="let item of products; let i=index">
       <div class="left">
         <img class="avatar" [src]="item.img">
-        <img class="user"
-          [src]="item.avatar">
       </div>
       <div class="text">
         <p>{{item.name}}</p>
@@ -36,12 +40,12 @@
         <span>{{item.cart}}{{item.type}}</span>
         <span class="full" (click)="addItem(i,item)">+</span>
       </div>
-      <div class="buy"  *ngIf="item.cart==0">
+      <div class="buy" *ngIf="item.cart==0">
         <span class="wide" (click)="addItem(i,item)">Añadir</span>
       </div>
     </div>
 
-    <div class="cart" [ngClass]="{'disabled': cart.items === 0}" >
+    <div class="cart" [ngClass]="{'disabled': cart.items === 0}">
       <button class="red shadow" routerLink="/code">
         <span class="number">{{cart.items}}</span>
         <span class="price">${{cart.price}}</span>
@@ -49,8 +53,6 @@
         Ver la bolsa
       </button>
     </div>
-
   </div>
-
 
 </ion-content>
