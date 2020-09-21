@@ -13,18 +13,22 @@
 
   <div class="code-wrapper ion-padding">
 
-    <div class="credit-Cards"></div>
+    <div class="credit-Cards">
+      <img src="assets/credit_card.png" alt="">
+      <p class="name">{{card_name}}</p>
+      <p class="number">{{card_number}}</p>
+    </div>
 
     <div class="form-wrapper">
       <form>
 
         <div class="input-group">
-          <input type="text" required />
+          <input type="text" required [(ngModel)]="card_number" name="card_number"/>
           <label>Número de Tarjeta</label>
         </div>
 
         <div class="input-group">
-          <input type="text" required />
+          <input type="text" required [(ngModel)]="card_name" name="card_name"/>
           <label>Tarjeta Habiente</label>
         </div>
 

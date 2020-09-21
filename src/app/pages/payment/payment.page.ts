@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentPage implements OnInit {
 
+  card_name: string;
+  card_number: number;
+
   constructor() { }
 
   ngOnInit() {
