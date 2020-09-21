@@ -10,17 +10,6 @@
       <!-- <p>Regresar</p>
       <ion-icon name="chevron-back-outline"></ion-icon> -->
     </div>
-
-
-    <div class="author">
-      <img
-        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
-      <div class="text">
-        <p>Maria antonieta Jimenez Sosa</p>
-        <p class="note">Frutas y Verduras</p>
-      </div>
-    </div>
-
   </div>
 
 
@@ -46,12 +35,15 @@
       </div>
     </div>
 
-    <div class="cart" routerLink="/cart" [ngClass]="{'disabled': cart.items === 0}">
-      <button class="red shadow">
-        <span class="number">{{cart.items}}</span>
+    <div class="cart" [ngClass]="{'disabled': cart.items === 0}">
+      <button class="red shadow" routerLink="/prize">
         <span class="price">${{cart.price}}</span>
-
-        Ver la bolsa
+        Pagar con puntos
+      </button>
+      
+      <button class="white shadow" routerLink="/payment">
+        <span class="price">${{cart.price}}</span>
+        Pagar con tarjeta
       </button>
     </div>
   </div>

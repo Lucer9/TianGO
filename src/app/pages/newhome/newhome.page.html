@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="code-wrapper ">
-    <h2 class="padding">Machantes:</h2>
+    <h2 class="padding">Marchantes:</h2>
     <div class="scrollmenu">
       <div class="item" *ngFor="let item of personas" routerLink="/person-detail">
         <img [src]="item.img">
@@ -23,8 +23,7 @@
     <div class="tian-card user-badge" *ngFor="let item of products; let i=index">
       <div class="left">
         <img class="avatar" [src]="item.img">
-        <img class="user"
-          [src]="item.avatar">
+        <img class="user" [src]="item.avatar">
       </div>
       <div class="text">
         <p>{{item.name}}</p>
@@ -36,13 +35,13 @@
         <span>{{item.cart}}{{item.type}}</span>
         <span class="full" (click)="addItem(i,item)">+</span>
       </div>
-      <div class="buy"  *ngIf="item.cart==0">
+      <div class="buy" *ngIf="item.cart==0">
         <span class="wide" (click)="addItem(i,item)">Añadir</span>
       </div>
     </div>
 
-    <div class="cart" [ngClass]="{'disabled': cart.items === 0}" >
-      <button class="red shadow" routerLink="/code">
+    <div class="cart" routerLink="/cart" [ngClass]="{'disabled': cart.items === 0}">
+      <button class="red shadow">
         <span class="number">{{cart.items}}</span>
         <span class="price">${{cart.price}}</span>
 
