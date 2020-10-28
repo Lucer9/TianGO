@@ -10,14 +10,21 @@
     </div>
   </div>
   <div class="code-wrapper ion-padding">
-    <h2>Ingresa tu número</h2>
+    <h2>Ingresa tu código</h2>
     <div class="inputs">
-      <input [(ngModel)]="code[0]" type="tel" maxlength="1" #telInput>
-      <input [(ngModel)]="code[1]" type="tel" maxlength="1" #telInput>
-      <input [(ngModel)]="code[2]" type="tel" maxlength="1" #telInput>
-      <input [(ngModel)]="code[3]" type="tel" maxlength="1" #telInput>
+      
+      <div class="container" [ngClass]="{'error':error}">
+        <span class="input" [ngClass]="{'active':code.length==0}" ></span>
+        <span class="input" [ngClass]="{'active':code.length==1}" ></span>
+        <span class="input" [ngClass]="{'active':code.length==2}" ></span>
+        <span class="input" [ngClass]="{'active':code.length==3}" ></span>
+        <span class="input" [ngClass]="{'active':code.length==4}" ></span>
+        <span class="input" [ngClass]="{'active':code.length==5}" ></span>
+      </div>
+      <input [(ngModel)]="code" type="tel" maxlength="6" #telInput (input)="input()">
     </div>
-    <button class="red shadow sendbottom" routerLink="/market">
+    <!-- <button class="red shadow sendbottom" routerLink="/market"> -->
+    <button class="red shadow sendbottom" (click)=verify()>
       Enviar código
     </button>
   </div>

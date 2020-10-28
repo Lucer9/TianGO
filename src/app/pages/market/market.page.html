@@ -1,6 +1,6 @@
 <ion-content color="primary">
   <div class="header">
-    <div class="left">
+    <div class="left" routerLink="/camera">
       <ion-icon name="qr-code-outline"></ion-icon>
       <p>Escanéa el código o...</p>
     </div>
@@ -13,22 +13,20 @@
 
     <div class="ion-padding">
       <h2>Busca tu mercado</h2>
-      <input [(ngModel)]="searchWord" class="search" placeholder="Mercado">
+      <input [(ngModel)]="searchWord" (input)="searchFor()" class="search" placeholder="Mercado">
     </div>
 
 
-    <div class="tian-card badge" routerLink="/newhome" >
+    <div class="tian-card badge" [routerLink]="['/newhome', market.id]"
+      *ngFor="let market of marketList">
       <div class="left">
-        <img class="avatar"
-          src="https://uploads.neatorama.com/images/posts/443/111/111443/Baby-Yoda-Memes-to-Brighten-Your-Day_0-x.jpg">
-          <span class="km">0.1 km</span>
+        <img class="avatar" [src]="market.image_path">
+        <!-- <span class="km">0.1 km</span> -->
       </div>
       <div class="text">
-        <p>Titulo</p>
-        <p class="note">Calle Algo algo asd as da sd as d asdasd as dad</p>
+        <p>{{market.title}}</p>
+        <p class="note">{{market.address}}</p>
       </div>
     </div>
-
-
   </div>
 </ion-content>

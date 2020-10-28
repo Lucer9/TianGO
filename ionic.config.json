@@ -1,5 +1,7 @@
 {
   "name": "tiango",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

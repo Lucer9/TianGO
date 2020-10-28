@@ -1,6 +1,7 @@
-import {Component, Input, ViewChild, OnInit} from '@angular/core';
+import { Component, Input, ViewChild, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { NavController } from '@ionic/angular';
+import { NavController } from "@ionic/angular";
+import { UsersService } from "src/app/services/users.service";
 
 @Component({
   selector: "app-code",
@@ -10,8 +11,8 @@ import { NavController } from '@ionic/angular';
 export class CodePage implements OnInit {
   @ViewChild("telInput") telInput;
 
-  tel = "21323123";
-  constructor(private router: Router) {}
+  tel = "";
+  constructor(private router: Router, private userService: UsersService) {}
   ngOnInit() {}
 
   ionViewLoaded() {
@@ -20,7 +21,39 @@ export class CodePage implements OnInit {
     }, 150);
   }
 
-  nextPage() {
-    this.router.navigateByUrl("/verificate");
+  registerPhone() {
+    this.userService.register("+52" + this.tel).subscribe(
+      (res: any) => {
+        let user = {
+          username: res.user.username,
+          id: res.user.id,
+        };
+        console.log(res);
+        localStorage.setItem("user", JSON.stringify(user));
+        this.router.navigateByUrl("/verificate");
+      },
+      (error) => {
+        console.log(error);
+        if (error.error.error.code == "UsernameExistsException") {
+          this.loginPhone();
+        }
+      }
+    );
+    // this.router.navigateByUrl("/verificate");
+  }
+
+  loginPhone() {
+    console.log("trying login");
+    this.userService.login("+52" + this.tel).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        console.log(error);
+        if (error.error.error.code == "UserNotConfirmedException") {
+          this.router.navigateByUrl("/verificate");
+        }
+      }
+    );
   }
 }

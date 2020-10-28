@@ -10,24 +10,29 @@
     </div>
   </div>
   <div class="code-wrapper ">
-    <h2 class="padding">Marchantes:</h2>
+
+    <div class="ion-padding">
+      <h2>Busca un Producto</h2>
+      <input [(ngModel)]="searchWord" (input)="searchFor()" class="search" placeholder="Mercado">
+    </div>
+    <!-- <h2 class="padding">Marchantes:</h2>
     <div class="scrollmenu">
       <div class="item" *ngFor="let item of personas" routerLink="/person-detail">
         <img [src]="item.img">
         <p class="bold">{{item.name}}</p>
         <p class="category">{{item.category}}</p>
       </div>
-    </div>
+    </div> -->
     <br>
-    <h2 class="padding">Productos pasados:</h2>
+    <!-- <h2 class="padding">Productos:</h2> -->
     <div class="tian-card user-badge" *ngFor="let item of products; let i=index">
       <div class="left">
-        <img class="avatar" [src]="item.img">
-        <img class="user" [src]="item.avatar">
+        <img class="avatar" [src]="item.image_path">
+        <!-- <img class="user" [src]="item.avatar"> -->
       </div>
       <div class="text">
-        <p>{{item.name}}</p>
-        <p class="note"><span>${{item.price}}/{{item.type}}</span></p>
+        <p>{{item.title}}</p>
+        <p class="note"><span>${{item.price}}/kg</span></p>
       </div>
 
       <div class="buy" *ngIf="item.cart!=0">

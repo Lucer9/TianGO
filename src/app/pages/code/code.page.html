@@ -11,8 +11,8 @@
   </div>
   <div class="code-wrapper ion-padding">
     <h2>Ingresa tu número</h2>
-    <input [(ngModel)]="tel" type="tel" #telInput>
-    <button class="red shadow sendbottom" routerLink="/verificate">
+    <input [(ngModel)]="tel" type="tel" #telInput placeholder="5511223344">
+    <button class="red shadow sendbottom" (click)="registerPhone()">
       Enviar código
     </button>
   </div>

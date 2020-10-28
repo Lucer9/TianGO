@@ -30,7 +30,27 @@
   font-size: 16px;
 }
 
+// ion-page,
+// ion-app,
+// ion-content.transparentBody, .inner-scroll {
+//   --background: blue !important;
+//   background: transparent !important;
+// }
+
+.transparentBody {
+  background: transparent !important;
+}
+ion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor {
+  background: transparent none !important;
+  --background: transparent none !important;
+}
+
+input::placeholder {
+  opacity: 0.3;
+}
+
 .header {
+  margin-top: 30px;
   height: 60px;
   position: relative;
   width: 100%;
@@ -231,7 +251,7 @@ button {
         font-weight: bolder;
       }
 
-      &.wide{
+      &.wide {
         color: white;
         background-color: #ec2b38;
         width: 120px;

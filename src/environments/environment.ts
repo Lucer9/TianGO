@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpoint: "https://iomvafczma.execute-api.us-west-2.amazonaws.com/Development/",
+  firebaseConfig: {
+    apiKey: "AIzaSyCA8RjZI-3J6lGZzqbkSAmnB4WCj3-6b3E",
+    authDomain: "tiango-57b12.firebaseapp.com",
+    databaseURL: "https://tiango-57b12.firebaseio.com",
+    projectId: "tiango-57b12",
+    storageBucket: "tiango-57b12.appspot.com",
+    messagingSenderId: "44188800647",
+    appId: "1:44188800647:web:a4f7c380fb233cc5024a22",
+    measurementId: "G-KW0GTYG0HK",
+  },
 };
 
 /*
