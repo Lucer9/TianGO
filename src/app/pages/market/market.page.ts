@@ -29,14 +29,17 @@ export class MarketPage implements OnInit {
 
   searchFor() {
     console.log(this.searchWord);
+
     this.marketList = this.backupMarketList;
-    this.marketList = this.marketList.filter((current) => {
-      if (current.title && this.searchWord) {
-        if (current.title.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1) {
-          return true;
+    if (this.searchWord != "") {
+      this.marketList = this.marketList.filter((current) => {
+        if (current.title && this.searchWord) {
+          if (current.title.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
         }
-        return false;
-      }
-    });
+      });
+    }
   }
 }

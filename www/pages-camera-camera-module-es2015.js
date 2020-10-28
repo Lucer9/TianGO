@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-content class=\"transparentBody\" >\n    <div class=\"header\">\n      <div class=\"left\" routerLink=\"/\" routerDirection=\"back\">\n        <ion-icon name=\"chevron-back-outline\"></ion-icon>\n        <p>Regresar</p>\n      </div>\n    </div>\n  </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-content class=\"transparentBody\" >\n    <div class=\"header\">\n      <div class=\"left\" (click)=\"goBack()\" >\n        <ion-icon name=\"chevron-back-outline\"></ion-icon>\n        <p>Regresar</p>\n      </div>\n    </div>\n  </ion-content>");
 
 /***/ }),
 
@@ -119,12 +119,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/qr-scanner/ngx */ "./node_modules/@ionic-native/qr-scanner/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
 
 
 
 
 let CameraPage = class CameraPage {
-    constructor(qrScanner, toastCtrl) {
+    constructor(location, qrScanner, toastCtrl) {
+        this.location = location;
         this.qrScanner = qrScanner;
         this.toastCtrl = toastCtrl;
     }
@@ -182,8 +185,12 @@ let CameraPage = class CameraPage {
     ionViewWillLeave() {
         this.stopScanning();
     }
+    goBack() {
+        this.location.back();
+    }
 };
 CameraPage.ctorParameters = () => [
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"] },
     { type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["QRScanner"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] }
 ];

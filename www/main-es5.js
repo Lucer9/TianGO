@@ -176,7 +176,7 @@
       "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
       var routes = [{
-        path: 'home',
+        path: "home",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-home-home-module */
@@ -187,11 +187,11 @@
           });
         }
       }, {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full"
       }, {
-        path: 'code',
+        path: "code",
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-code-code-module */
@@ -202,7 +202,7 @@
           });
         }
       }, {
-        path: 'verificate',
+        path: "verificate",
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-verificate-verificate-module */
@@ -213,7 +213,7 @@
           });
         }
       }, {
-        path: 'market',
+        path: "market",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-market-market-module */
@@ -224,7 +224,7 @@
           });
         }
       }, {
-        path: 'prize',
+        path: "prize",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-prize-prize-module */
@@ -235,7 +235,7 @@
           });
         }
       }, {
-        path: 'payment',
+        path: "payment",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-payment-payment-module */
@@ -246,7 +246,7 @@
           });
         }
       }, {
-        path: 'newhome',
+        path: "newhome",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-newhome-newhome-module */
@@ -257,7 +257,18 @@
           });
         }
       }, {
-        path: 'person-detail',
+        path: "newhome/:id",
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | pages-newhome-newhome-module */
+          "pages-newhome-newhome-module").then(__webpack_require__.bind(null,
+          /*! ./pages/newhome/newhome.module */
+          "./src/app/pages/newhome/newhome.module.ts")).then(function (m) {
+            return m.NewhomePageModule;
+          });
+        }
+      }, {
+        path: "person-detail",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-person-detail-person-detail-module */
@@ -268,7 +279,7 @@
           });
         }
       }, {
-        path: 'cart',
+        path: "cart",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-cart-cart-module */
@@ -279,7 +290,7 @@
           });
         }
       }, {
-        path: 'camera',
+        path: "camera",
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-camera-camera-module */
@@ -574,7 +585,7 @@
 
       var environment = {
         production: false,
-        endpoint: "http://localhost:8080",
+        endpoint: "http://iomvafczma.execute-api.us-west-2.amazonaws.com/Development",
         firebaseConfig: {
           apiKey: "AIzaSyCA8RjZI-3J6lGZzqbkSAmnB4WCj3-6b3E",
           authDomain: "tiango-57b12.firebaseapp.com",

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: "https://iomvafczma.execute-api.us-west-2.amazonaws.com/Development/",
+  endpoint: "http://localhost:8080",
   firebaseConfig: {
     apiKey: "AIzaSyCA8RjZI-3J6lGZzqbkSAmnB4WCj3-6b3E",
     authDomain: "tiango-57b12.firebaseapp.com",

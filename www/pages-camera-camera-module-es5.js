@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n<ion-content class=\"transparentBody\" >\n    <div class=\"header\">\n      <div class=\"left\" routerLink=\"/\" routerDirection=\"back\">\n        <ion-icon name=\"chevron-back-outline\"></ion-icon>\n        <p>Regresar</p>\n      </div>\n    </div>\n  </ion-content>";
+      __webpack_exports__["default"] = "\n<ion-content class=\"transparentBody\" >\n    <div class=\"header\">\n      <div class=\"left\" (click)=\"goBack()\" >\n        <ion-icon name=\"chevron-back-outline\"></ion-icon>\n        <p>Regresar</p>\n      </div>\n    </div>\n  </ion-content>";
       /***/
     },
 
@@ -222,11 +222,18 @@
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @ionic/angular */
       "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/common */
+      "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
       var CameraPage = /*#__PURE__*/function () {
-        function CameraPage(qrScanner, toastCtrl) {
+        function CameraPage(location, qrScanner, toastCtrl) {
           _classCallCheck(this, CameraPage);
 
+          this.location = location;
           this.qrScanner = qrScanner;
           this.toastCtrl = toastCtrl;
         }
@@ -310,6 +317,11 @@
           value: function ionViewWillLeave() {
             this.stopScanning();
           }
+        }, {
+          key: "goBack",
+          value: function goBack() {
+            this.location.back();
+          }
         }]);
 
         return CameraPage;
@@ -317,6 +329,8 @@
 
       CameraPage.ctorParameters = function () {
         return [{
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]
+        }, {
           type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["QRScanner"]
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"]

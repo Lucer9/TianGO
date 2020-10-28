@@ -51,6 +51,14 @@ const routes: Routes = [
     path: "camera",
     loadChildren: () => import("./pages/camera/camera.module").then((m) => m.CameraPageModule),
   },
+  {
+    path: "create-product",
+    loadChildren: () => import("./admin/create-product/create-product.module").then((m) => m.CreateProductPageModule),
+  },
+  {
+    path: "create-product/:id",
+    loadChildren: () => import("./admin/create-product/create-product.module").then((m) => m.CreateProductPageModule),
+  }
 ];
 
 @NgModule({

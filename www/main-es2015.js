@@ -292,59 +292,61 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'home',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-home-home-module */ "pages-home-home-module").then(__webpack_require__.bind(null, /*! ./pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then(m => m.HomePageModule)
+        path: "home",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-home-home-module */ "pages-home-home-module").then(__webpack_require__.bind(null, /*! ./pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then((m) => m.HomePageModule),
     },
     {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full",
     },
     {
-        path: 'code',
-        loadChildren: () => Promise.all(/*! import() | pages-code-code-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-code-code-module")]).then(__webpack_require__.bind(null, /*! ./pages/code/code.module */ "./src/app/pages/code/code.module.ts")).then(m => m.CodePageModule)
+        path: "code",
+        loadChildren: () => Promise.all(/*! import() | pages-code-code-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-code-code-module")]).then(__webpack_require__.bind(null, /*! ./pages/code/code.module */ "./src/app/pages/code/code.module.ts")).then((m) => m.CodePageModule),
     },
     {
-        path: 'verificate',
-        loadChildren: () => Promise.all(/*! import() | pages-verificate-verificate-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-verificate-verificate-module")]).then(__webpack_require__.bind(null, /*! ./pages/verificate/verificate.module */ "./src/app/pages/verificate/verificate.module.ts")).then(m => m.VerificatePageModule)
+        path: "verificate",
+        loadChildren: () => Promise.all(/*! import() | pages-verificate-verificate-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-verificate-verificate-module")]).then(__webpack_require__.bind(null, /*! ./pages/verificate/verificate.module */ "./src/app/pages/verificate/verificate.module.ts")).then((m) => m.VerificatePageModule),
     },
     {
-        path: 'market',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-market-market-module */ "pages-market-market-module").then(__webpack_require__.bind(null, /*! ./pages/market/market.module */ "./src/app/pages/market/market.module.ts")).then(m => m.MarketPageModule)
+        path: "market",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-market-market-module */ "pages-market-market-module").then(__webpack_require__.bind(null, /*! ./pages/market/market.module */ "./src/app/pages/market/market.module.ts")).then((m) => m.MarketPageModule),
     },
     {
-        path: 'prize',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-prize-prize-module */ "pages-prize-prize-module").then(__webpack_require__.bind(null, /*! ./pages/prize/prize.module */ "./src/app/pages/prize/prize.module.ts")).then(m => m.PrizePageModule)
+        path: "prize",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-prize-prize-module */ "pages-prize-prize-module").then(__webpack_require__.bind(null, /*! ./pages/prize/prize.module */ "./src/app/pages/prize/prize.module.ts")).then((m) => m.PrizePageModule),
     },
     {
-        path: 'payment',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-payment-payment-module */ "pages-payment-payment-module").then(__webpack_require__.bind(null, /*! ./pages/payment/payment.module */ "./src/app/pages/payment/payment.module.ts")).then(m => m.PaymentPageModule)
+        path: "payment",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-payment-payment-module */ "pages-payment-payment-module").then(__webpack_require__.bind(null, /*! ./pages/payment/payment.module */ "./src/app/pages/payment/payment.module.ts")).then((m) => m.PaymentPageModule),
     },
     {
-        path: 'newhome',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-newhome-newhome-module */ "pages-newhome-newhome-module").then(__webpack_require__.bind(null, /*! ./pages/newhome/newhome.module */ "./src/app/pages/newhome/newhome.module.ts")).then(m => m.NewhomePageModule)
+        path: "newhome",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-newhome-newhome-module */ "pages-newhome-newhome-module").then(__webpack_require__.bind(null, /*! ./pages/newhome/newhome.module */ "./src/app/pages/newhome/newhome.module.ts")).then((m) => m.NewhomePageModule),
     },
     {
-        path: 'person-detail',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-person-detail-person-detail-module */ "pages-person-detail-person-detail-module").then(__webpack_require__.bind(null, /*! ./pages/person-detail/person-detail.module */ "./src/app/pages/person-detail/person-detail.module.ts")).then(m => m.PersonDetailPageModule)
+        path: "newhome/:id",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-newhome-newhome-module */ "pages-newhome-newhome-module").then(__webpack_require__.bind(null, /*! ./pages/newhome/newhome.module */ "./src/app/pages/newhome/newhome.module.ts")).then((m) => m.NewhomePageModule),
     },
     {
-        path: 'cart',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-cart-cart-module */ "pages-cart-cart-module").then(__webpack_require__.bind(null, /*! ./pages/cart/cart.module */ "./src/app/pages/cart/cart.module.ts")).then(m => m.CartPageModule)
+        path: "person-detail",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-person-detail-person-detail-module */ "pages-person-detail-person-detail-module").then(__webpack_require__.bind(null, /*! ./pages/person-detail/person-detail.module */ "./src/app/pages/person-detail/person-detail.module.ts")).then((m) => m.PersonDetailPageModule),
     },
     {
-        path: 'camera',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-camera-camera-module */ "pages-camera-camera-module").then(__webpack_require__.bind(null, /*! ./pages/camera/camera.module */ "./src/app/pages/camera/camera.module.ts")).then(m => m.CameraPageModule)
+        path: "cart",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-cart-cart-module */ "pages-cart-cart-module").then(__webpack_require__.bind(null, /*! ./pages/cart/cart.module */ "./src/app/pages/cart/cart.module.ts")).then((m) => m.CartPageModule),
+    },
+    {
+        path: "camera",
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-camera-camera-module */ "pages-camera-camera-module").then(__webpack_require__.bind(null, /*! ./pages/camera/camera.module */ "./src/app/pages/camera/camera.module.ts")).then((m) => m.CameraPageModule),
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__["PreloadAllModules"] })
-        ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__["PreloadAllModules"] })],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
     })
 ], AppRoutingModule);
 
@@ -494,7 +496,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    endpoint: "http://localhost:8080",
+    endpoint: "http://iomvafczma.execute-api.us-west-2.amazonaws.com/Development",
     firebaseConfig: {
         apiKey: "AIzaSyCA8RjZI-3J6lGZzqbkSAmnB4WCj3-6b3E",
         authDomain: "tiango-57b12.firebaseapp.com",

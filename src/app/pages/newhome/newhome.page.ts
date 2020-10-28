@@ -26,6 +26,7 @@ export class NewhomePage implements OnInit {
     },
   ];
 
+  searchWord;
   products = [
     {
       id: 1,
@@ -40,6 +41,7 @@ export class NewhomePage implements OnInit {
     items: 0,
     price: 0,
   };
+  backupProducts: any;
   constructor(private productsService: ProductsService) {}
   ngOnInit() {
     this.productsService.getProducts().subscribe((res: any) => {
@@ -55,6 +57,7 @@ export class NewhomePage implements OnInit {
         }
       }
       this.products = res.products;
+      this.backupProducts = res.products;
     });
   }
 
@@ -74,8 +77,23 @@ export class NewhomePage implements OnInit {
     this.products[index].cart--;
     this.cart.items--;
     this.cart.price -= parseFloat(item.price);
-    delete this.cart[item.id];
+    if (this.products[index].cart == 0) delete this.cart[item.id];
     console.log(JSON.stringify(this.cart));
     localStorage.setItem("cart", JSON.stringify(this.cart));
+  }
+
+  searchFor() {
+    console.log(this.searchWord);
+    this.products = this.backupProducts;
+    if (this.searchWord != "") {
+      this.products = this.products.filter((current) => {
+        if (current.title && this.searchWord) {
+          if (current.title.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      });
+    }
   }
 }

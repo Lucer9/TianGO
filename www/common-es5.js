@@ -700,24 +700,19 @@
       var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common/http */
       "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-      /* harmony import */
-
-
-      var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! src/environments/environment */
-      "./src/environments/environment.ts");
 
       var UsersService = /*#__PURE__*/function () {
         function UsersService(http) {
           _classCallCheck(this, UsersService);
 
           this.http = http;
+          this.endpoint = "http://localhost:8080";
         }
 
         _createClass(UsersService, [{
           key: "register",
           value: function register(phone) {
-            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/users/register"), {
+            return this.http.post("".concat(this.endpoint, "/users/register"), {
               username: phone,
               phone: phone,
               password: phone
@@ -726,7 +721,7 @@
         }, {
           key: "login",
           value: function login(phone) {
-            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/users/login"), {
+            return this.http.post("".concat(this.endpoint, "/users/login"), {
               username: phone,
               password: phone
             });
@@ -734,7 +729,7 @@
         }, {
           key: "verify",
           value: function verify(user, code) {
-            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/users/verify"), {
+            return this.http.post("".concat(this.endpoint, "/users/verify"), {
               user: {
                 id: user.id,
                 username: user.username

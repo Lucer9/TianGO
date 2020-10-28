@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}} producto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <input placeholder="title" [(ngModel)]="product.title">
+  <input placeholder="price" [(ngModel)]="product.price">
+  <input placeholder="description" [(ngModel)]="product.description">
+  <input type="file" *ngIf="title!='Editar'" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpg">
+  <button class="red shadow" (click)="postProduct()">Subir Producto</button>
+  <button class="white shadow" *ngIf="title=='Editar'" (click)="deleteProduct()">Eliminar Producto</button>
+
+
+</ion-content>

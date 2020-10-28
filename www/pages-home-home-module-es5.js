@@ -18,7 +18,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content [fullscreen]=\"true\">\n  <div class=\"container\">\n    <img src=\"/assets/homeWaves.svg\" height=\"100%\">\n    <div class=\"phone\">\n      <div class=\"phone-container ion-padding\" >\n        <h2 class=\"center\">Crea tu cuenta</h2>\n        <p class=\"center\">¡Compra en tus mercados favoritos con diferentes metodos de pago y premios!</p>\n        <button class=\"red shadow\" routerLink=\"/code\">\n          <ion-icon name=\"phone-portrait-outline\"></ion-icon>Ingresar con tu número\n        </button>\n        <button class=\"white shadow\" routerLink=\"/camera\">Entrar como invitado</button>\n      </div>\n    </div>\n  </div>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-content [fullscreen]=\"true\">\n  <div class=\"container\">\n    <img src=\"/assets/homeWaves.svg\" height=\"100%\">\n    <div class=\"phone\">\n      <div class=\"phone-container ion-padding\" >\n        <h2 class=\"center\">Crea tu cuenta</h2>\n        <p class=\"center\">¡Compra en tus mercados favoritos con diferentes metodos de pago y premios!</p>\n        <button class=\"red shadow\" routerLink=\"/code\">\n          <ion-icon name=\"phone-portrait-outline\"></ion-icon>Ingresar con tu número\n        </button>\n        <button class=\"white shadow\" routerLink=\"/market\">Entrar como invitado</button>\n      </div>\n    </div>\n  </div>\n</ion-content>\n";
       /***/
     },
 

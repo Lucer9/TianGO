@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ProductsService } from "src/app/services/products.service";
 
 @Component({
   selector: "app-cart",
@@ -6,36 +7,49 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./cart.page.scss"],
 })
 export class CartPage implements OnInit {
-  constructor() {}
+  constructor(private productsService: ProductsService) {}
+  ngOnInit() {
+    this.productsService.getProducts().subscribe((res: any) => {
+      if (localStorage.getItem("cart") != undefined) {
+        this.cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      console.log(res);
+      for (let p of res.products) {
+        p.cart = 0;
+        //@ts-ignore
+        if (this.cart[p.id] != undefined) {
+          p.cart = this.cart[p.id].cart;
+          this.products.push(p)
+        }
+      }
+    });
+  }
 
-  ngOnInit() {}
-
-  products = [
-    {
-      id: 1,
-      price: 50,
-      type: "kg",
-      name: "Melón",
-      img: "https://www.superama.com.mx/Content/images/products/img_large/0000000004050L.jpg",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-      cart: 5,
-    },
-  ];
+  products = [];
 
   cart = {
-    items: 5,
-    price: 250,
+    items: 0,
+    price: 0,
   };
 
   addItem(index, item) {
     this.products[index].cart++;
     this.cart.items++;
-    this.cart.price += item.price;
+    this.cart.price += parseFloat(item.price);
+
+    let itemExists = false;
+    //@ts-ignore
+    this.cart[item.id] = item;
+    console.log(JSON.stringify(this.cart));
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   removeItem(index, item) {
     this.products[index].cart--;
     this.cart.items--;
-    this.cart.price -= item.price;
+    this.cart.price -= parseFloat(item.price);
+    if(this.products[index].cart == 0) delete this.cart[item.id];
+    console.log(JSON.stringify(this.cart));
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 }

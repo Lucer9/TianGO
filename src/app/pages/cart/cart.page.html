@@ -16,10 +16,10 @@
 
     <div class="tian-card" *ngFor="let item of products; let i=index">
       <div class="left">
-        <img class="avatar" [src]="item.img">
+        <img class="avatar" [src]="item.image_path">
       </div>
       <div class="text">
-        <p>{{item.name}}</p>
+        <p>{{item.title}}</p>
         <p class="note"><span>${{item.price}}/{{item.type}}</span></p>
       </div>
 

@@ -7,13 +7,14 @@
     <div class="right">
       <!-- <p>Regresar</p>
       <ion-icon name="chevron-back-outline"></ion-icon> -->
+      <ion-icon routerLink="/create-product" name="add"></ion-icon> 
     </div>
   </div>
   <div class="code-wrapper ">
 
     <div class="ion-padding">
       <h2>Busca un Producto</h2>
-      <input [(ngModel)]="searchWord" (input)="searchFor()" class="search" placeholder="Mercado">
+      <input [(ngModel)]="searchWord" (input)="searchFor()" class="search" placeholder="Producto">
     </div>
     <!-- <h2 class="padding">Marchantes:</h2>
     <div class="scrollmenu">
@@ -27,7 +28,7 @@
     <!-- <h2 class="padding">Productos:</h2> -->
     <div class="tian-card user-badge" *ngFor="let item of products; let i=index">
       <div class="left">
-        <img class="avatar" [src]="item.image_path">
+        <img [routerLink]="['/create-product', item.id]" class="avatar" [src]="item.image_path">
         <!-- <img class="user" [src]="item.avatar"> -->
       </div>
       <div class="text">

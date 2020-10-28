@@ -447,30 +447,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-
 
 
 
 let UsersService = class UsersService {
     constructor(http) {
         this.http = http;
+        this.endpoint = "http://localhost:8080";
     }
     register(phone) {
-        return this.http.post(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint}/users/register`, {
+        return this.http.post(`${this.endpoint}/users/register`, {
             username: phone,
             phone: phone,
             password: phone,
         });
     }
     login(phone) {
-        return this.http.post(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint}/users/login`, {
+        return this.http.post(`${this.endpoint}/users/login`, {
             username: phone,
             password: phone,
         });
     }
     verify(user, code) {
-        return this.http.post(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint}/users/verify`, {
+        return this.http.post(`${this.endpoint}/users/verify`, {
             user: {
                 id: user.id,
                 username: user.username,
