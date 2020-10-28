@@ -9,7 +9,6 @@ export class LocationsService {
   constructor(private http: HttpClient) {}
 
   getLocations() {
-    return this.http.get(`${environment.endpoint}/locations/all`, 'no-cors'
-    );
+    return this.http.get(`${environment.endpoint}/locations/all`);
   }
 }
