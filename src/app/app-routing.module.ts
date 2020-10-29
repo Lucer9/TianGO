@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import("./pages/cart/cart.module").then((m) => m.CartPageModule),
   },
   {
-    path: "camera",
+    path: "camera/:type",
     loadChildren: () => import("./pages/camera/camera.module").then((m) => m.CameraPageModule),
   },
   {

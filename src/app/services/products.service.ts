@@ -8,7 +8,10 @@ import { environment } from "src/environments/environment";
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  getProducts() {
+  getProducts(marketId) {
+    return this.http.get(`${environment.endpoint}/products/${marketId}/all`);
+  }
+  getAllProducts() {
     return this.http.get(`${environment.endpoint}/products/all`);
   }
 

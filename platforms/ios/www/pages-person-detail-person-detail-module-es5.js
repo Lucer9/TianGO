@@ -7,27 +7,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-person-detail-person-detail-module"], {
     /***/
-    "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/person-detail/person-detail.page.html":
-    /*!***************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/person-detail/person-detail.page.html ***!
-      \***************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function node_modulesRawLoaderDistCjsJsSrcAppPagesPersonDetailPersonDetailPageHtml(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "<ion-content color=\"primary\">\n  <div class=\"header\">\n    <span class=\"dimmer\"></span>\n\n    <div class=\"left\" routerLink=\"/newhome\"  routerDirection=\"back\">\n      <ion-icon name=\"chevron-back-outline\"></ion-icon>\n      <p>Regresar</p>\n    </div>\n    <div class=\"right\">\n      <!-- <p>Regresar</p>\n      <ion-icon name=\"chevron-back-outline\"></ion-icon> -->\n    </div>\n\n\n    <div class=\"author\">\n      <img\n        src=\"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80\">\n      <div class=\"text\">\n        <p>Maria antonieta Jimenez Sosa</p>\n        <p class=\"note\">Frutas y Verduras</p>\n      </div>\n    </div>\n\n  </div>\n\n\n\n  <div class=\"code-wrapper \">\n\n    <div class=\"tian-card\" *ngFor=\"let item of products; let i=index\">\n      <div class=\"left\">\n        <img class=\"avatar\" [src]=\"item.img\">\n      </div>\n      <div class=\"text\">\n        <p>{{item.name}}</p>\n        <p class=\"note\"><span>${{item.price}}/{{item.type}}</span></p>\n      </div>\n\n      <div class=\"buy\" *ngIf=\"item.cart!=0\">\n        <span class=\"full\" (click)=\"removeItem(i,item)\">-</span>\n        <span>{{item.cart}}{{item.type}}</span>\n        <span class=\"full\" (click)=\"addItem(i,item)\">+</span>\n      </div>\n      <div class=\"buy\" *ngIf=\"item.cart==0\">\n        <span class=\"wide\" (click)=\"addItem(i,item)\">Añadir</span>\n      </div>\n    </div>\n\n    <div class=\"cart\" routerLink=\"/cart\" [ngClass]=\"{'disabled': cart.items === 0}\">\n      <button class=\"red shadow\">\n        <span class=\"number\">{{cart.items}}</span>\n        <span class=\"price\">${{cart.price}}</span>\n\n        Ver la bolsa\n      </button>\n    </div>\n  </div>\n\n</ion-content>";
-      /***/
-    },
-
-    /***/
-    "./src/app/pages/person-detail/person-detail-routing.module.ts":
+    "BwYb":
     /*!*********************************************************************!*\
       !*** ./src/app/pages/person-detail/person-detail-routing.module.ts ***!
       \*********************************************************************/
@@ -35,7 +15,7 @@
     /*! exports provided: PersonDetailPageRoutingModule */
 
     /***/
-    function srcAppPagesPersonDetailPersonDetailRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    function BwYb(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -50,25 +30,25 @@
 
       var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
+      "mrSG");
       /* harmony import */
 
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "fXoL");
       /* harmony import */
 
 
       var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/router */
-      "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+      "tyNb");
       /* harmony import */
 
 
       var _person_detail_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! ./person-detail.page */
-      "./src/app/pages/person-detail/person-detail.page.ts");
+      "zX8L");
 
       var routes = [{
         path: '',
@@ -87,7 +67,27 @@
     },
 
     /***/
-    "./src/app/pages/person-detail/person-detail.module.ts":
+    "RNWg":
+    /*!***************************************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/person-detail/person-detail.page.html ***!
+      \***************************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function RNWg(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<ion-content color=\"primary\">\n  <div class=\"header\">\n    <span class=\"dimmer\"></span>\n\n    <div class=\"left\" routerLink=\"/newhome\"  routerDirection=\"back\">\n      <ion-icon name=\"chevron-back-outline\"></ion-icon>\n      <p>Regresar</p>\n    </div>\n    <div class=\"right\">\n      <!-- <p>Regresar</p>\n      <ion-icon name=\"chevron-back-outline\"></ion-icon> -->\n    </div>\n\n\n    <div class=\"author\">\n      <img\n        src=\"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80\">\n      <div class=\"text\">\n        <p>Maria antonieta Jimenez Sosa</p>\n        <p class=\"note\">Frutas y Verduras</p>\n      </div>\n    </div>\n\n  </div>\n\n\n\n  <div class=\"code-wrapper \">\n\n    <div class=\"tian-card\" *ngFor=\"let item of products; let i=index\">\n      <div class=\"left\">\n        <img class=\"avatar\" [src]=\"item.img\">\n      </div>\n      <div class=\"text\">\n        <p>{{item.name}}</p>\n        <p class=\"note\"><span>${{item.price}}/{{item.type}}</span></p>\n      </div>\n\n      <div class=\"buy\" *ngIf=\"item.cart!=0\">\n        <span class=\"full\" (click)=\"removeItem(i,item)\">-</span>\n        <span>{{item.cart}}{{item.type}}</span>\n        <span class=\"full\" (click)=\"addItem(i,item)\">+</span>\n      </div>\n      <div class=\"buy\" *ngIf=\"item.cart==0\">\n        <span class=\"wide\" (click)=\"addItem(i,item)\">Añadir</span>\n      </div>\n    </div>\n\n    <div class=\"cart\" routerLink=\"/cart\" [ngClass]=\"{'disabled': cart.items === 0}\">\n      <button class=\"red shadow\">\n        <span class=\"number\">{{cart.items}}</span>\n        <span class=\"price\">${{cart.price}}</span>\n\n        Ver la bolsa\n      </button>\n    </div>\n  </div>\n\n</ion-content>";
+      /***/
+    },
+
+    /***/
+    "e0h/":
     /*!*************************************************************!*\
       !*** ./src/app/pages/person-detail/person-detail.module.ts ***!
       \*************************************************************/
@@ -95,7 +95,7 @@
     /*! exports provided: PersonDetailPageModule */
 
     /***/
-    function srcAppPagesPersonDetailPersonDetailModuleTs(module, __webpack_exports__, __webpack_require__) {
+    function e0h(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -110,43 +110,43 @@
 
       var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
+      "mrSG");
       /* harmony import */
 
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "fXoL");
       /* harmony import */
 
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common */
-      "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+      "ofXK");
       /* harmony import */
 
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/forms */
-      "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+      "3Pt+");
       /* harmony import */
 
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "TEn/");
       /* harmony import */
 
 
       var _person_detail_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! ./person-detail-routing.module */
-      "./src/app/pages/person-detail/person-detail-routing.module.ts");
+      "BwYb");
       /* harmony import */
 
 
       var _person_detail_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ./person-detail.page */
-      "./src/app/pages/person-detail/person-detail.page.ts");
+      "zX8L");
 
       var PersonDetailPageModule = function PersonDetailPageModule() {
         _classCallCheck(this, PersonDetailPageModule);
@@ -160,7 +160,7 @@
     },
 
     /***/
-    "./src/app/pages/person-detail/person-detail.page.scss":
+    "l7BS":
     /*!*************************************************************!*\
       !*** ./src/app/pages/person-detail/person-detail.page.scss ***!
       \*************************************************************/
@@ -168,7 +168,7 @@
     /*! exports provided: default */
 
     /***/
-    function srcAppPagesPersonDetailPersonDetailPageScss(module, __webpack_exports__, __webpack_require__) {
+    function l7BS(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -180,7 +180,7 @@
     },
 
     /***/
-    "./src/app/pages/person-detail/person-detail.page.ts":
+    "zX8L":
     /*!***********************************************************!*\
       !*** ./src/app/pages/person-detail/person-detail.page.ts ***!
       \***********************************************************/
@@ -188,7 +188,7 @@
     /*! exports provided: PersonDetailPage */
 
     /***/
-    function srcAppPagesPersonDetailPersonDetailPageTs(module, __webpack_exports__, __webpack_require__) {
+    function zX8L(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -203,13 +203,25 @@
 
       var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
+      "mrSG");
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _raw_loader_person_detail_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! raw-loader!./person-detail.page.html */
+      "RNWg");
+      /* harmony import */
+
+
+      var _person_detail_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./person-detail.page.scss */
+      "l7BS");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "fXoL");
 
       var PersonDetailPage = /*#__PURE__*/function () {
         function PersonDetailPage() {
@@ -256,14 +268,10 @@
         return [];
       };
 
-      PersonDetailPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      PersonDetailPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-person-detail',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
-        /*! raw-loader!./person-detail.page.html */
-        "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/person-detail/person-detail.page.html"))["default"],
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
-        /*! ./person-detail.page.scss */
-        "./src/app/pages/person-detail/person-detail.page.scss"))["default"]]
+        template: _raw_loader_person_detail_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_person_detail_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
       })], PersonDetailPage);
       /***/
     }

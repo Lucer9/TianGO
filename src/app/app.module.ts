@@ -15,6 +15,7 @@ import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { QRScanner } from "@ionic-native/qr-scanner/ngx";
 import { ZBar } from "@ionic-native/zbar/ngx";
+import { Stripe } from '@ionic-native/stripe/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { ZBar } from "@ionic-native/zbar/ngx";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
-  providers: [QRScanner, ZBar, StatusBar, SplashScreen, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ QRScanner, ZBar, StatusBar, SplashScreen,Stripe, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

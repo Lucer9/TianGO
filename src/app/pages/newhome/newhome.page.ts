@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "src/app/services/products.service";
+import { Route } from "@angular/compiler/src/core";
+import { ActivatedRoute } from "@angular/router";
+import { LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-newhome",
@@ -26,38 +29,44 @@ export class NewhomePage implements OnInit {
     },
   ];
 
+  marketId = 0;
   searchWord;
-  products = [
-    {
-      id: 1,
-      price: 50,
-      title: "Melón",
-      image_path: "https://www.superama.com.mx/Content/images/products/img_large/0000000004050L.jpg",
-      cart: 0,
-    },
-  ];
+  products = [];
 
   cart = {
     items: 0,
     price: 0,
   };
   backupProducts: any;
-  constructor(private productsService: ProductsService) {}
-  ngOnInit() {
-    this.productsService.getProducts().subscribe((res: any) => {
-      if (localStorage.getItem("cart") != undefined) {
-        this.cart = JSON.parse(localStorage.getItem("cart"));
+  constructor(private productService: ProductsService, private route: ActivatedRoute, public loadingController: LoadingController) {}
+  async ngOnInit() {
+    const loading = await this.loadingController.create({
+      cssClass: "my-custom-class",
+      message: "Cargando los productos",
+    });
+    await loading.present();
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      if (params.id != undefined) {
+        this.productService.getProducts(params.id).subscribe((res: any) => {
+          console.log(res);
+
+          if (localStorage.getItem("cart") != undefined) {
+            this.cart = JSON.parse(localStorage.getItem("cart"));
+          }
+          for (let p of res.products) {
+            p.cart = 0;
+            //@ts-ignore
+            if (this.cart[p.id] != undefined) {
+              p.cart = this.cart[p.id].cart;
+            }
+          }
+          this.products = res.products;
+          this.backupProducts = res.products;
+          loading.dismiss();
+
+        });
       }
-      console.log(res);
-      for (let p of res.products) {
-        p.cart = 0;
-        //@ts-ignore
-        if (this.cart[p.id] != undefined) {
-          p.cart = this.cart[p.id].cart;
-        }
-      }
-      this.products = res.products;
-      this.backupProducts = res.products;
     });
   }
 

@@ -1,13 +1,8 @@
 <ion-content color="primary">
   <div class="header">
-    <div class="left">
+    <div class="left" routerLink="/camera/products">
       <ion-icon name="qr-code-outline"></ion-icon>
       <p>Escanéa el código o...</p>
-    </div>
-    <div class="right">
-      <!-- <p>Regresar</p>
-      <ion-icon name="chevron-back-outline"></ion-icon> -->
-      <ion-icon routerLink="/create-product" name="add"></ion-icon> 
     </div>
   </div>
   <div class="code-wrapper ">
@@ -28,7 +23,7 @@
     <!-- <h2 class="padding">Productos:</h2> -->
     <div class="tian-card user-badge" *ngFor="let item of products; let i=index">
       <div class="left">
-        <img [routerLink]="['/create-product', item.id]" class="avatar" [src]="item.image_path">
+        <img class="avatar" [src]="item.image_path">
         <!-- <img class="user" [src]="item.avatar"> -->
       </div>
       <div class="text">

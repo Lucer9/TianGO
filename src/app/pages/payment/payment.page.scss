@@ -1,104 +1,142 @@
-.form-wrapper{
-    position: fixed;
-    bottom: 40px;
-    margin: 10px;
-    left: 0;
-    height: 55vh;
-}
+// .form-wrapper{
+//     position: fixed;
+//     bottom: 40px;
+//     margin: 10px;
+//     left: 0;
+//     height: 55vh;
+// }
 
-.input-group {
-  position: relative;
-  margin: 25px 0 20px;
-}
+// .input-group {
+//   position: relative;
+//   margin: 25px 0 20px;
+// }
 
-.name{
-  position: absolute;
-  top: 140px;
-  left: 70px;
-  color: white;
-}
+// .name{
+//   position: absolute;
+//   top: 140px;
+//   left: 70px;
+//   color: white;
+// }
 
-.number{
-  position: absolute;
-  top: 215px;
-  left: 70px;
-  font-size: 18px;
-  color: white;
-}
+// .number{
+//   position: absolute;
+//   top: 215px;
+//   left: 70px;
+//   font-size: 18px;
+//   color: white;
+// }
+
+// input {
+//   font-size: 18px;
+//   display: block;
+//   width: 100%;
+//   border: none;
+//   border-bottom: 1px solid #fafafa;
+//   color: #474747;
+//   border: 1px solid #d2d2d2;
+// }
+
+// input:focus {
+//   outline: none;
+// }
+
+// label {
+//   color: #999;
+//   font-size: 18px;
+//   font-weight: normal;
+//   position: absolute;
+//   pointer-events: none;
+//   left: 5px;
+//   top: 10px;
+//   transition: 0.2s ease all;
+//   -moz-transition: 0.2s ease all;
+//   -webkit-transition: 0.2s ease all;
+
+//   padding: 5px 10px;
+
+// }
+
+// input:focus ~ label,
+// input:valid ~ label {
+//   background-color: white;
+//   border-radius: 5px;
+//   top: -15px;
+//   left: 10px;
+//   font-size: 14px;
+//   color: #ec2b38;
+// }
+
+// input:focus ~ input:focus ~ {
+//   width: 50%;
+// }
+
+// .col {
+//   display: flex;
+
+//   .input-group {
+//     margin: 0;
+//   }
+
+//   input:focus ~ label,
+//   input:valid ~ label {
+//     top: 0px;
+//   }
+
+//   label{
+//     top: 30px;
+//   }
+
+//   .exp {
+//     width: 65%;
+//     margin-right: 25px;
+//   }
+
+//   .cvc {
+//     width: 30%;
+//   }
+// }
+
+// button{
+//     bottom: 0;
+//     position: absolute;
+//     margin-left: 15px;
+//     width: 90%;
+// }
 
 input {
-  font-size: 18px;
-  display: block;
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #fafafa;
-  color: #474747;
-  border: 1px solid #d2d2d2;
+  margin: 0;
+  margin-top: 20px;
 }
 
-input:focus {
-  outline: none;
-}
-
-label {
-  color: #999;
-  font-size: 18px;
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  left: 5px;
-  top: 10px;
-  transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
-
-  padding: 5px 10px;
-
-}
-
-input:focus ~ label,
-input:valid ~ label {
-  background-color: white;
-  border-radius: 5px;
-  top: -15px;
-  left: 10px;
-  font-size: 14px;
-  color: #ec2b38;
-}
-
-input:focus ~ input:focus ~ {
-  width: 50%;
-}
-
-.col {
+.flex {
   display: flex;
 
-  .input-group {
-    margin: 0;
-  }
-
-  input:focus ~ label,
-  input:valid ~ label {
-    top: 0px;
-  }
-
-  label{
-    top: 30px;
-  }
-
-  .exp {
-    width: 65%;
-    margin-right: 25px;   
-  }
-
-  .cvc {
-    width: 30%;
+  .small {
+    width: 50%;
+    margin-left: 10px;
   }
 }
 
-button{
-    bottom: 0;
+button {
+  margin-top: 40px;
+}
+
+.credit-cards {
+  position: relative;
+  .name {
     position: absolute;
-    margin-left: 15px;
-    width: 90%;
+    color: white;
+    top: 145px;
+    left: 50px;
+    
+  }
+  .number {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    top: 120px;
+    left: 50px;
+  
+  }
 }

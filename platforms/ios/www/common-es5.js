@@ -1,244 +1,19 @@
 (function () {
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js":
-    /*!*********************************************************************!*\
-      !*** ./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js ***!
-      \*********************************************************************/
-
-    /*! exports provided: c */
-
-    /***/
-    function node_modulesIonicCoreDistEsmButtonActive5da929d4Js(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "c", function () {
-        return createButtonActiveGesture;
-      });
-      /* harmony import */
-
-
-      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./index-92848855.js */
-      "./node_modules/@ionic/core/dist/esm/index-92848855.js");
-      /* harmony import */
-
-
-      var _index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./index-eea61379.js */
-      "./node_modules/@ionic/core/dist/esm/index-eea61379.js");
-      /* harmony import */
-
-
-      var _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./haptic-7b8ba70a.js */
-      "./node_modules/@ionic/core/dist/esm/haptic-7b8ba70a.js");
-
-      var createButtonActiveGesture = function createButtonActiveGesture(el, isButton) {
-        var currentTouchedButton;
-        var initialTouchedButton;
-
-        var activateButtonAtPoint = function activateButtonAtPoint(x, y, hapticFeedbackFn) {
-          if (typeof document === 'undefined') {
-            return;
-          }
-
-          var target = document.elementFromPoint(x, y);
-
-          if (!target || !isButton(target)) {
-            clearActiveButton();
-            return;
-          }
-
-          if (target !== currentTouchedButton) {
-            clearActiveButton();
-            setActiveButton(target, hapticFeedbackFn);
-          }
-        };
-
-        var setActiveButton = function setActiveButton(button, hapticFeedbackFn) {
-          currentTouchedButton = button;
-
-          if (!initialTouchedButton) {
-            initialTouchedButton = currentTouchedButton;
-          }
-
-          var buttonToModify = currentTouchedButton;
-          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
-            return buttonToModify.classList.add('ion-activated');
-          });
-          hapticFeedbackFn();
-        };
-
-        var clearActiveButton = function clearActiveButton() {
-          var dispatchClick = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-
-          if (!currentTouchedButton) {
-            return;
-          }
-
-          var buttonToModify = currentTouchedButton;
-          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
-            return buttonToModify.classList.remove('ion-activated');
-          });
-          /**
-           * Clicking on one button, but releasing on another button
-           * does not dispatch a click event in browsers, so we
-           * need to do it manually here. Some browsers will
-           * dispatch a click if clicking on one button, dragging over
-           * another button, and releasing on the original button. In that
-           * case, we need to make sure we do not cause a double click there.
-           */
-
-          if (dispatchClick && initialTouchedButton !== currentTouchedButton) {
-            currentTouchedButton.click();
-          }
-
-          currentTouchedButton = undefined;
-        };
-
-        return Object(_index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__["createGesture"])({
-          el: el,
-          gestureName: 'buttonActiveDrag',
-          threshold: 0,
-          onStart: function onStart(ev) {
-            return activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["a"]);
-          },
-          onMove: function onMove(ev) {
-            return activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["b"]);
-          },
-          onEnd: function onEnd() {
-            clearActiveButton(true);
-            Object(_haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["h"])();
-            initialTouchedButton = undefined;
-          }
-        });
-      };
-      /***/
-
-    },
-
-    /***/
-    "./node_modules/@ionic/core/dist/esm/framework-delegate-d1eb6504.js":
-    /*!**************************************************************************!*\
-      !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-d1eb6504.js ***!
-      \**************************************************************************/
-
-    /*! exports provided: a, d */
-
-    /***/
-    function node_modulesIonicCoreDistEsmFrameworkDelegateD1eb6504Js(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "a", function () {
-        return attachComponent;
-      });
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "d", function () {
-        return detachComponent;
-      });
-
-      var attachComponent = /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(delegate, container, component, cssClasses, componentProps) {
-          var el;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (!delegate) {
-                    _context.next = 2;
-                    break;
-                  }
-
-                  return _context.abrupt("return", delegate.attachViewToDom(container, component, componentProps, cssClasses));
-
-                case 2:
-                  if (!(typeof component !== 'string' && !(component instanceof HTMLElement))) {
-                    _context.next = 4;
-                    break;
-                  }
-
-                  throw new Error('framework delegate is missing');
-
-                case 4:
-                  el = typeof component === 'string' ? container.ownerDocument && container.ownerDocument.createElement(component) : component;
-
-                  if (cssClasses) {
-                    cssClasses.forEach(function (c) {
-                      return el.classList.add(c);
-                    });
-                  }
-
-                  if (componentProps) {
-                    Object.assign(el, componentProps);
-                  }
-
-                  container.appendChild(el);
-
-                  if (!el.componentOnReady) {
-                    _context.next = 11;
-                    break;
-                  }
-
-                  _context.next = 11;
-                  return el.componentOnReady();
-
-                case 11:
-                  return _context.abrupt("return", el);
-
-                case 12:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee);
-        }));
-
-        return function attachComponent(_x, _x2, _x3, _x4, _x5) {
-          return _ref.apply(this, arguments);
-        };
-      }();
-
-      var detachComponent = function detachComponent(delegate, element) {
-        if (element) {
-          if (delegate) {
-            var container = element.parentElement;
-            return delegate.removeViewFromDom(container, element);
-          }
-
-          element.remove();
-        }
-
-        return Promise.resolve();
-      };
-      /***/
-
-    },
-
-    /***/
-    "./node_modules/@ionic/core/dist/esm/haptic-7b8ba70a.js":
+    "2c9M":
     /*!**************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/haptic-7b8ba70a.js ***!
       \**************************************************************/
@@ -246,7 +21,7 @@
     /*! exports provided: a, b, c, d, h */
 
     /***/
-    function node_modulesIonicCoreDistEsmHaptic7b8ba70aJs(module, __webpack_exports__, __webpack_require__) {
+    function c9M(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -412,7 +187,115 @@
     },
 
     /***/
-    "./node_modules/@ionic/core/dist/esm/spinner-configs-c78e170e.js":
+    "6Qg2":
+    /*!*******************************************!*\
+      !*** ./src/app/services/users.service.ts ***!
+      \*******************************************/
+
+    /*! exports provided: UsersService */
+
+    /***/
+    function Qg2(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "UsersService", function () {
+        return UsersService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "mrSG");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+      /* harmony import */
+
+
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/common/http */
+      "tk/3");
+
+      var UsersService = /*#__PURE__*/function () {
+        function UsersService(http) {
+          _classCallCheck(this, UsersService);
+
+          this.http = http;
+          this.endpoint = "http://localhost:8080";
+        }
+
+        _createClass(UsersService, [{
+          key: "register",
+          value: function register(phone) {
+            return this.http.post("".concat(this.endpoint, "/users/register"), {
+              username: phone,
+              phone: phone,
+              password: phone
+            });
+          }
+        }, {
+          key: "login",
+          value: function login(phone) {
+            return this.http.post("".concat(this.endpoint, "/users/login"), {
+              username: phone,
+              password: phone
+            });
+          }
+        }, {
+          key: "verify",
+          value: function verify(user, code) {
+            return this.http.post("".concat(this.endpoint, "/users/verify"), {
+              user: {
+                id: user.id,
+                username: user.username
+              },
+              code: code
+            });
+          }
+        }, {
+          key: "addPM",
+          value: function addPM(pmId, userId) {
+            return this.http.post("".concat(this.endpoint, "/methods"), {
+              payment_method_id: "pm_card_mx",
+              user_id: userId
+            });
+          }
+        }, {
+          key: "createOrder",
+          value: function createOrder(products, payment_method, user_id) {
+            return this.http.post("".concat(this.endpoint, "/orders"), {
+              payment_method: payment_method,
+              user_id: user_id,
+              products: products
+            });
+          }
+        }]);
+
+        return UsersService;
+      }();
+
+      UsersService.ctorParameters = function () {
+        return [{
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+        }];
+      };
+
+      UsersService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: "root"
+      })], UsersService);
+      /***/
+    },
+
+    /***/
+    "6i10":
     /*!***********************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-c78e170e.js ***!
       \***********************************************************************/
@@ -420,7 +303,7 @@
     /*! exports provided: S */
 
     /***/
-    function node_modulesIonicCoreDistEsmSpinnerConfigsC78e170eJs(module, __webpack_exports__, __webpack_require__) {
+    function i10(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -543,7 +426,330 @@
     },
 
     /***/
-    "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js":
+    "NqGI":
+    /*!**************************************************************************!*\
+      !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-d1eb6504.js ***!
+      \**************************************************************************/
+
+    /*! exports provided: a, d */
+
+    /***/
+    function NqGI(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "a", function () {
+        return attachComponent;
+      });
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "d", function () {
+        return detachComponent;
+      });
+
+      var attachComponent = /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(delegate, container, component, cssClasses, componentProps) {
+          var el;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  if (!delegate) {
+                    _context.next = 2;
+                    break;
+                  }
+
+                  return _context.abrupt("return", delegate.attachViewToDom(container, component, componentProps, cssClasses));
+
+                case 2:
+                  if (!(typeof component !== 'string' && !(component instanceof HTMLElement))) {
+                    _context.next = 4;
+                    break;
+                  }
+
+                  throw new Error('framework delegate is missing');
+
+                case 4:
+                  el = typeof component === 'string' ? container.ownerDocument && container.ownerDocument.createElement(component) : component;
+
+                  if (cssClasses) {
+                    cssClasses.forEach(function (c) {
+                      return el.classList.add(c);
+                    });
+                  }
+
+                  if (componentProps) {
+                    Object.assign(el, componentProps);
+                  }
+
+                  container.appendChild(el);
+
+                  if (!el.componentOnReady) {
+                    _context.next = 11;
+                    break;
+                  }
+
+                  _context.next = 11;
+                  return el.componentOnReady();
+
+                case 11:
+                  return _context.abrupt("return", el);
+
+                case 12:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        return function attachComponent(_x, _x2, _x3, _x4, _x5) {
+          return _ref.apply(this, arguments);
+        };
+      }();
+
+      var detachComponent = function detachComponent(delegate, element) {
+        if (element) {
+          if (delegate) {
+            var container = element.parentElement;
+            return delegate.removeViewFromDom(container, element);
+          }
+
+          element.remove();
+        }
+
+        return Promise.resolve();
+      };
+      /***/
+
+    },
+
+    /***/
+    "S3Px":
+    /*!**********************************************!*\
+      !*** ./src/app/services/products.service.ts ***!
+      \**********************************************/
+
+    /*! exports provided: ProductsService */
+
+    /***/
+    function S3Px(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ProductsService", function () {
+        return ProductsService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "mrSG");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+      /* harmony import */
+
+
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/common/http */
+      "tk/3");
+      /* harmony import */
+
+
+      var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! src/environments/environment */
+      "AytR");
+
+      var ProductsService = /*#__PURE__*/function () {
+        function ProductsService(http) {
+          _classCallCheck(this, ProductsService);
+
+          this.http = http;
+        }
+
+        _createClass(ProductsService, [{
+          key: "getProducts",
+          value: function getProducts(marketId) {
+            return this.http.get("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/products/").concat(marketId, "/all"));
+          }
+        }, {
+          key: "getAllProducts",
+          value: function getAllProducts() {
+            return this.http.get("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/products/all"));
+          }
+        }, {
+          key: "getProduct",
+          value: function getProduct(id) {
+            return this.http.get("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/products/").concat(id));
+          }
+        }, {
+          key: "addProduct",
+          value: function addProduct(product) {
+            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/products/"), product);
+          }
+        }, {
+          key: "updateProduct",
+          value: function updateProduct(id, product) {
+            return this.http.patch("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/products/").concat(id), product);
+          }
+        }, {
+          key: "deleteProduct",
+          value: function deleteProduct(id) {
+            return this.http["delete"]("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/products/").concat(id));
+          }
+        }]);
+
+        return ProductsService;
+      }();
+
+      ProductsService.ctorParameters = function () {
+        return [{
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+        }];
+      };
+
+      ProductsService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: "root"
+      })], ProductsService);
+      /***/
+    },
+
+    /***/
+    "U/uv":
+    /*!*********************************************************************!*\
+      !*** ./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js ***!
+      \*********************************************************************/
+
+    /*! exports provided: c */
+
+    /***/
+    function UUv(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "c", function () {
+        return createButtonActiveGesture;
+      });
+      /* harmony import */
+
+
+      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-92848855.js */
+      "sxy2");
+      /* harmony import */
+
+
+      var _index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./index-eea61379.js */
+      "ItpF");
+      /* harmony import */
+
+
+      var _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./haptic-7b8ba70a.js */
+      "2c9M");
+
+      var createButtonActiveGesture = function createButtonActiveGesture(el, isButton) {
+        var currentTouchedButton;
+        var initialTouchedButton;
+
+        var activateButtonAtPoint = function activateButtonAtPoint(x, y, hapticFeedbackFn) {
+          if (typeof document === 'undefined') {
+            return;
+          }
+
+          var target = document.elementFromPoint(x, y);
+
+          if (!target || !isButton(target)) {
+            clearActiveButton();
+            return;
+          }
+
+          if (target !== currentTouchedButton) {
+            clearActiveButton();
+            setActiveButton(target, hapticFeedbackFn);
+          }
+        };
+
+        var setActiveButton = function setActiveButton(button, hapticFeedbackFn) {
+          currentTouchedButton = button;
+
+          if (!initialTouchedButton) {
+            initialTouchedButton = currentTouchedButton;
+          }
+
+          var buttonToModify = currentTouchedButton;
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
+            return buttonToModify.classList.add('ion-activated');
+          });
+          hapticFeedbackFn();
+        };
+
+        var clearActiveButton = function clearActiveButton() {
+          var dispatchClick = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+          if (!currentTouchedButton) {
+            return;
+          }
+
+          var buttonToModify = currentTouchedButton;
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
+            return buttonToModify.classList.remove('ion-activated');
+          });
+          /**
+           * Clicking on one button, but releasing on another button
+           * does not dispatch a click event in browsers, so we
+           * need to do it manually here. Some browsers will
+           * dispatch a click if clicking on one button, dragging over
+           * another button, and releasing on the original button. In that
+           * case, we need to make sure we do not cause a double click there.
+           */
+
+          if (dispatchClick && initialTouchedButton !== currentTouchedButton) {
+            currentTouchedButton.click();
+          }
+
+          currentTouchedButton = undefined;
+        };
+
+        return Object(_index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__["createGesture"])({
+          el: el,
+          gestureName: 'buttonActiveDrag',
+          threshold: 0,
+          onStart: function onStart(ev) {
+            return activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["a"]);
+          },
+          onMove: function onMove(ev) {
+            return activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["b"]);
+          },
+          onEnd: function onEnd() {
+            clearActiveButton(true);
+            Object(_haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["h"])();
+            initialTouchedButton = undefined;
+          }
+        });
+      };
+      /***/
+
+    },
+
+    /***/
+    "sPtc":
     /*!*************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/theme-5641d27f.js ***!
       \*************************************************************/
@@ -551,7 +757,7 @@
     /*! exports provided: c, g, h, o */
 
     /***/
-    function node_modulesIonicCoreDistEsmTheme5641d27fJs(module, __webpack_exports__, __webpack_require__) {
+    function sPtc(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -661,102 +867,6 @@
       }();
       /***/
 
-    },
-
-    /***/
-    "./src/app/services/users.service.ts":
-    /*!*******************************************!*\
-      !*** ./src/app/services/users.service.ts ***!
-      \*******************************************/
-
-    /*! exports provided: UsersService */
-
-    /***/
-    function srcAppServicesUsersServiceTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "UsersService", function () {
-        return UsersService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/common/http */
-      "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-      /* harmony import */
-
-
-      var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! src/environments/environment */
-      "./src/environments/environment.ts");
-
-      var UsersService = /*#__PURE__*/function () {
-        function UsersService(http) {
-          _classCallCheck(this, UsersService);
-
-          this.http = http;
-        }
-
-        _createClass(UsersService, [{
-          key: "register",
-          value: function register(phone) {
-            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/users/register"), {
-              username: phone,
-              phone: phone,
-              password: phone
-            });
-          }
-        }, {
-          key: "login",
-          value: function login(phone) {
-            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/users/login"), {
-              username: phone,
-              password: phone
-            });
-          }
-        }, {
-          key: "verify",
-          value: function verify(user, code) {
-            return this.http.post("".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint, "/users/verify"), {
-              user: {
-                id: user.id,
-                username: user.username
-              },
-              code: code
-            });
-          }
-        }]);
-
-        return UsersService;
-      }();
-
-      UsersService.ctorParameters = function () {
-        return [{
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
-        }];
-      };
-
-      UsersService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: "root"
-      })], UsersService);
-      /***/
     }
   }]);
 })();

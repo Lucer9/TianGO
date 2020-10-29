@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "src/app/services/products.service";
+import { LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-cart",
@@ -7,9 +8,14 @@ import { ProductsService } from "src/app/services/products.service";
   styleUrls: ["./cart.page.scss"],
 })
 export class CartPage implements OnInit {
-  constructor(private productsService: ProductsService) {}
-  ngOnInit() {
-    this.productsService.getProducts().subscribe((res: any) => {
+  constructor(private productsService: ProductsService, public loadingController: LoadingController) {}
+  async ngOnInit() {
+    const loading = await this.loadingController.create({
+      cssClass: "my-custom-class",
+      message: "Cargando tus productos",
+    });
+    await loading.present();
+    this.productsService.getAllProducts().subscribe((res: any) => {
       if (localStorage.getItem("cart") != undefined) {
         this.cart = JSON.parse(localStorage.getItem("cart"));
       }
@@ -19,9 +25,10 @@ export class CartPage implements OnInit {
         //@ts-ignore
         if (this.cart[p.id] != undefined) {
           p.cart = this.cart[p.id].cart;
-          this.products.push(p)
+          this.products.push(p);
         }
       }
+      loading.dismiss();
     });
   }
 
@@ -48,7 +55,7 @@ export class CartPage implements OnInit {
     this.products[index].cart--;
     this.cart.items--;
     this.cart.price -= parseFloat(item.price);
-    if(this.products[index].cart == 0) delete this.cart[item.id];
+    if (this.products[index].cart == 0) delete this.cart[item.id];
     console.log(JSON.stringify(this.cart));
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }

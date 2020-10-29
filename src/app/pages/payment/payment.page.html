@@ -1,6 +1,6 @@
 <ion-content color="primary">
   <div class="header">
-    <div class="left" routerLink="/" routerDirection="back">
+    <div class="left" routerLink="/cart" routerDirection="back">
       <ion-icon name="chevron-back-outline"></ion-icon>
       <p>Regresar</p>
     </div>
@@ -13,12 +13,25 @@
 
   <div class="code-wrapper ion-padding">
 
-    <div class="credit-Cards">
+    <div class="credit-cards">
       <img src="assets/credit_card.png" alt="">
       <p class="name">{{card_name}}</p>
       <p class="number">{{card_number}}</p>
     </div>
 
+
+    <div class="form">
+      <input type="text" required [(ngModel)]="card_number" name="card_number" placeholder="Número de tarjeta"[brmasker]="{mask:'0000 0000 0000 0000', len:19, type:'num'}" />
+      <input type="text" required [(ngModel)]="card_name" name="card_name" placeholder="Tarjeta Habiente" />
+      <div class="flex">
+        <input type="text" [(ngModel)]="card_date" required placeholder="Fecha de Expiración" [brmasker]="{mask:'00/00', len:5,type:'num'}" />
+        <input type="text" [(ngModel)]="card_cvc" class="small" required placeholder="CVC" [brmasker]="{mask:'000', len:3, type:'num'}"/>
+      </div>
+      <button class="red shadow" (click)="submit()" >
+        Proceder al pago
+      </button>
+    </div>
+    <!-- 
     <div class="form-wrapper">
       <form>
 
@@ -49,7 +62,7 @@
         </button>
 
       </form>
-    </div>
-    
+    </div> -->
+
   </div>
 </ion-content>
