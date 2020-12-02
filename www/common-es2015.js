@@ -137,15 +137,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+
 
 
 
 let UsersService = class UsersService {
     constructor(http) {
         this.http = http;
-        this.endpoint = "http://localhost:8080";
+        this.endpoint = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint;
     }
     register(phone) {
+        src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint;
         return this.http.post(`${this.endpoint}/users/register`, {
             username: phone,
             phone: phone,
@@ -167,15 +170,35 @@ let UsersService = class UsersService {
             code,
         });
     }
-    addPM(pmId, userId) {
-        return this.http.post(`${this.endpoint}/methods`, {
-            payment_method_id: "pm_card_mx",
-            user_id: userId,
+    resendCode(user) {
+        return this.http.post(`${this.endpoint}/users/code`, {
+            user: {
+                id: user.id,
+            },
         });
+    }
+    getAllUsers() {
+        return this.http.get(`${this.endpoint}/users/all`);
+    }
+    getUser(id) {
+        return this.http.get(`${this.endpoint}/users/${id}`);
+    }
+    getPM(userId) {
+        console.log(`${this.endpoint}/methods?user_id=${userId}`);
+        return this.http.get(`${this.endpoint}/methods?user_id=${userId}`);
+    }
+    addPM(pm) {
+        return this.http.post(`${this.endpoint}/methods/create`, Object.assign({}, pm));
     }
     createOrder(products, payment_method, user_id) {
         return this.http.post(`${this.endpoint}/orders`, {
             payment_method,
+            user_id,
+            products,
+        });
+    }
+    createOrderPoints(products, user_id) {
+        return this.http.post(`${this.endpoint}/orders/points`, {
             user_id,
             products,
         });

@@ -2,7 +2,7 @@
   <div class="header">
     <span class="dimmer"></span>
 
-    <div class="left" routerLink="/newhome"  routerDirection="back">
+    <div class="left" (click)="goBack()" routerDirection="back">
       <ion-icon name="chevron-back-outline"></ion-icon>
       <p>Regresar</p>
     </div>
@@ -13,7 +13,11 @@
   </div>
 
   <div class="code-wrapper ">
-
+    <div class="points" (click)="presentAlert()">
+      <p class="small">TUS PUNTOS:</p>
+      <p class="bold">{{points}}p</p>
+      <span> +</span>
+    </div>
     <div class="tian-card" *ngFor="let item of products; let i=index">
       <div class="left">
         <img class="avatar" [src]="item.image_path">
@@ -33,13 +37,13 @@
       </div>
     </div>
 
-    <div class="cart" [ngClass]="{'disabled': cart.items === 0}">
-      <button class="red shadow" routerLink="/prize">
-        <span class="price">${{cart.price}}</span>
+    <div class="cart" >
+      <button class="red shadow" (click)="payWithPoints()" [ngClass]="{'disabled': cart.items === 0 || cart.price > points}">
+        <span class="price">{{cart.price}}p</span>
         Pagar con puntos
       </button>
       
-      <button class="white shadow" routerLink="/payment">
+      <button class="white shadow" routerLink="/payment" [ngClass]="{'disabled': cart.items === 0}">
         <span class="price">${{cart.price}}</span>
         Pagar con tarjeta
       </button>

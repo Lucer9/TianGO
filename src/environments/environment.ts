@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  endpoint: "http://192.168.1.72:8080",
+  // endpoint: "http://localhost:8100/api",
+  endpoint: "http://192.168.2.1:8080",
   tiangoPK: "pk_test_51Gtf49Ltfl1EdMnHumxsIzBSUIlVLQyJ5XqokzjHXXFyV3ffnvrK30BhpJUXOXtb7XpFcFYhBMrheIXapZr4uWp200IOOg3QXq",
   firebaseConfig: {
     apiKey: "AIzaSyCA8RjZI-3J6lGZzqbkSAmnB4WCj3-6b3E",

@@ -269,7 +269,7 @@
           value: function ngOnInit() {
             var _this = this;
 
-            if (localStorage.getItem("cart") != undefined) {
+            if (localStorage.getItem("cart") != undefined && localStorage.getItem("cart") != "undefined") {
               this.cart = JSON.parse(localStorage.getItem("cart"));
             }
 

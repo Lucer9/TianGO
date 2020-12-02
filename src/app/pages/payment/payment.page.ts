@@ -13,19 +13,20 @@ import { Router } from "@angular/router";
   styleUrls: ["./payment.page.scss"],
 })
 export class PaymentPage implements OnInit {
-  card_name = "Carlos Aguirre Orozco";
-  card_number = "4242 4242 4242 4242";
-  card_date = "02/22";
-  card_cvc = "123";
+  card_name = "";
+  card_number = "";
+  card_date = "";
+  card_cvc = "";
+
+  payments = [];
 
   constructor(private stripe: Stripe, private userService: UsersService, public loadingController: LoadingController, private router: Router) {
     this.stripe.setPublishableKey(environment.tiangoPK);
   }
   order = [];
   ngOnInit() {
-    let cart = JSON.parse(
-      '{"1":{"id":1,"price":50,"title":"Melón","image_path":"https://www.superama.com.mx/Content/images/products/img_large/0000000004050L.jpg","cart":3},"items":6,"price":465,"0ddb37dd-6bb4-4aa6-8b03-ae434e21e288":{"location_id":"2","image_path":"https://bills-tec-ccm-2020-cloud.s3.amazonaws.com/1603932745183.jpg","description":"Un plátano gordito y bien macho.","id":"0ddb37dd-6bb4-4aa6-8b03-ae434e21e288","price":"105","title":"Plátano","cart":3}}'
-    );
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
     for (let key of Object.entries(cart)) {
       //@ts-ignore
       if (key[1].location_id != undefined) {
@@ -34,47 +35,55 @@ export class PaymentPage implements OnInit {
         this.order.push({ id: key[1].id, price: key[1].price, quantity: key[1].cart });
       }
     }
-
-    console.log(this.order)
+    let userId = JSON.parse(localStorage.getItem("user")).id;
+    this.userService.getPM(userId).subscribe((res: any) => {
+      console.log(res);
+      this.payments = res.methods;
+    });
+    console.log(this.order);
   }
 
-  async submit() {
+  async pay(card_id) {
     const loading = await this.loadingController.create({
       cssClass: "my-custom-class",
-      message: "Procesando el pago",
+      message: "Realizando pago",
+    });
+    await loading.present();
+    console.log(card_id);
+    let userId = JSON.parse(localStorage.getItem("user")).id;
+    this.userService.createOrder(this.order, card_id, userId).subscribe((res: any) => {
+      console.log(res);
+      loading.dismiss();
+      localStorage.setItem("cart", undefined);
+      this.router.navigateByUrl("/prize");
+    });
+  }
+
+
+
+
+  async add_pm() {
+    const loading = await this.loadingController.create({
+      cssClass: "my-custom-class",
+      message: "Validando tarjeta",
     });
     await loading.present();
     let card = {
-      number: this.card_number.replace(/\s/g, ""),
-      expMonth: parseInt(this.card_date[0] + this.card_date[1]),
-      expYear: parseInt("20" + this.card_date[3] + this.card_date[4]),
-      cvc: this.card_cvc,
+      card_details: {
+        number: this.card_number.replace(/\s/g, ""),
+        exp_month: parseInt(this.card_date[0] + this.card_date[1]),
+        exp_year: parseInt("20" + this.card_date[3] + this.card_date[4]),
+        cvc: this.card_cvc,
+      },
+      billing_details: {
+        name: this.card_name,
+      },
     };
-    console.log(card);
 
-    let userId = JSON.parse(localStorage.getItem("user")).id;
-    console.log(userId);
-
-    this.userService.addPM("", userId).subscribe((res: any) => {
+    this.userService.addPM(card).subscribe((res: any) => {
       let pm = res.id;
-      let order = [
-        {
-          id: "id",
-          price: 300.0,
-          quantity: 3,
-        },
-      ];
-      this.userService.createOrder(this.order, pm, userId).subscribe((res: any) => {
-        console.log(res);
-        loading.dismiss();
-        localStorage.setItem("cart",undefined)
-        this.router.navigateByUrl("/prize");
-      });
+      loading.dismiss();
+      this.pay(pm)
     });
-
-    //   this.stripe
-    //     .createCardToken(card)
-    //     .then((token) => console.log(token))
-    //     .catch((error) => console.error(error));
   }
 }

@@ -11,58 +11,54 @@
     </div>
   </div>
 
-  <div class="code-wrapper ion-padding">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide class="code-wrapper ion-padding" *ngFor="let card of payments">
+      <div>
+        <div class="credit-cards">
+          <img src="assets/credit_card.png" alt="">
+          <p class="name" *ngIf="card.billing_details">{{card.billing_details.name}}</p>
+          <p class="number">••••  ••••  •••• {{card.card.last4}}</p>
+        </div>
 
-    <div class="credit-cards">
-      <img src="assets/credit_card.png" alt="">
-      <p class="name">{{card_name}}</p>
-      <p class="number">{{card_number}}</p>
-    </div>
-
-
-    <div class="form">
-      <input type="text" required [(ngModel)]="card_number" name="card_number" placeholder="Número de tarjeta"[brmasker]="{mask:'0000 0000 0000 0000', len:19, type:'num'}" />
-      <input type="text" required [(ngModel)]="card_name" name="card_name" placeholder="Tarjeta Habiente" />
-      <div class="flex">
-        <input type="text" [(ngModel)]="card_date" required placeholder="Fecha de Expiración" [brmasker]="{mask:'00/00', len:5,type:'num'}" />
-        <input type="text" [(ngModel)]="card_cvc" class="small" required placeholder="CVC" [brmasker]="{mask:'000', len:3, type:'num'}"/>
+        <div class="form">
+          <input type="text" disabled [value]="'••••  ••••  ••••  '+card.card.last4"/>
+          <input type="text" disabled [value]=card.billing_details.name/>
+          <div class="flex">
+            <input type="text" disabled [value]="card.card.exp_month+'/'+card.card.exp_year"/>
+            <input type="text" class="small" disabled value="•••"/>
+          </div>
+          <button class="red shadow" (click)="pay(card.id)">
+            Proceder al pago
+          </button>
+        </div>
       </div>
-      <button class="red shadow" (click)="submit()" >
-        Proceder al pago
-      </button>
-    </div>
-    <!-- 
-    <div class="form-wrapper">
-      <form>
+    </ion-slide>
 
-        <div class="input-group">
-          <input type="text" required [(ngModel)]="card_number" name="card_number"/>
-          <label>Número de Tarjeta</label>
+
+    <ion-slide class="code-wrapper ion-padding">
+      <div>
+        <div class="credit-cards">
+          <img src="assets/credit_card.png" alt="">
+          <p class="name">{{card_name}}</p>
+          <p class="number">{{card_number}}</p>
         </div>
 
-        <div class="input-group">
-          <input type="text" required [(ngModel)]="card_name" name="card_name"/>
-          <label>Tarjeta Habiente</label>
+        <div class="form">
+          <input type="text" required [(ngModel)]="card_number" name="card_number" placeholder="Número de tarjeta"
+            [brmasker]="{mask:'0000 0000 0000 0000', len:19, type:'num'}" />
+          <input type="text" required [(ngModel)]="card_name" name="card_name" placeholder="Tarjeta Habiente" />
+          <div class="flex">
+            <input type="text" [(ngModel)]="card_date" required placeholder="Fecha de Expiración"
+              [brmasker]="{mask:'00/00', len:5,type:'num'}" />
+            <input type="text" [(ngModel)]="card_cvc" class="small" required placeholder="CVC"
+              [brmasker]="{mask:'000', len:3, type:'num'}" />
+          </div>
+          <button class="red shadow" (click)="add_pm()">
+           Agregar y pagar
+          </button>
         </div>
+      </div>
+    </ion-slide>
 
-        <span class="col">
-          <div class="input-group exp">
-            <input type="text" required />
-            <label>Fecha de Expiración</label>
-          </div>
-
-          <div class="input-group cvc">
-            <input type="text" required />
-            <label>CVC</label>
-          </div>
-        </span>
-
-        <button class="red shadow sendbottom" routerLink="/prize">
-          Proceder al pago
-        </button>
-
-      </form>
-    </div> -->
-
-  </div>
+  </ion-slides>
 </ion-content>

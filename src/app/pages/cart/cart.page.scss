@@ -1,8 +1,46 @@
 .cart button {
-    text-align: left;
-    padding-left: 25px;
-    .price{
-        opacity: 1;
-    }
+  text-align: left;
+  padding-left: 25px;
+  .price {
+    opacity: 1;
+  }
+}
 
+.points {
+  width: 90%;
+  padding: 10px;
+  margin: 0 auto 30px auto;
+
+  background: linear-gradient(90deg, #ff5959 2.63%, #ed3945 100%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  position: relative;
+
+  p {
+    margin: 0;
+    color: whitesmoke;
+  }
+  .small {
+    font-size: 10px;
+  }
+  .bold {
+    font-weight: bolder;
+    font-size: 1.2em;
+  }
+
+  span {
+    width: 70px;
+    height: 70px;
+    line-height: 66px;
+    text-align: center;
+    background: linear-gradient(90deg, #ff5959 2.63%, #ed3945 100%);
+    border: 2px solid #ffffff;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    font-weight: bolder;
+    font-size: 1.8em;
+    top: -6px;
+    right: -11px;
+  }
 }

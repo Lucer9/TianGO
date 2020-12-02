@@ -261,8 +261,14 @@
 
               _this.router.navigateByUrl("/market");
             }, function (error) {
-              _this.error = true;
+              if (error.error.error.message == "User cannot be confirmed. Current status is CONFIRMED") {
+                _this.loginPhone(_this.user.username);
+              } else {
+                _this.error = true;
+              }
+
               console.log(error);
+              console.log(error.error.error.message);
             });
           }
         }, {
@@ -271,6 +277,24 @@
             if (this.code.length == 0) {
               this.error = false;
             }
+          }
+        }, {
+          key: "loginPhone",
+          value: function loginPhone(tel) {
+            var _this2 = this;
+
+            console.log("trying login");
+            this.userService.login(tel).subscribe(function (res) {
+              console.log(res);
+
+              _this2.router.navigateByUrl("/market");
+            }, function (error) {
+              console.log(error);
+
+              if (error.error.error.code == "UserNotConfirmedException") {
+                _this2.router.navigateByUrl("/verificate");
+              }
+            });
           }
         }]);
 

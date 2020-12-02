@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content color=\"primary\">\n  <div class=\"header\">\n    <div class=\"left\" routerLink=\"/cart\" routerDirection=\"back\">\n      <ion-icon name=\"chevron-back-outline\"></ion-icon>\n      <p>Regresar</p>\n    </div>\n\n    <div class=\"right\">\n      <!-- <p>Regresar</p>\n      <ion-icon name=\"chevron-back-outline\"></ion-icon> -->\n    </div>\n  </div>\n\n  <div class=\"code-wrapper ion-padding\">\n\n    <div class=\"credit-cards\">\n      <img src=\"assets/credit_card.png\" alt=\"\">\n      <p class=\"name\">{{card_name}}</p>\n      <p class=\"number\">{{card_number}}</p>\n    </div>\n\n\n    <div class=\"form\">\n      <input type=\"text\" required [(ngModel)]=\"card_number\" name=\"card_number\" placeholder=\"Número de tarjeta\"[brmasker]=\"{mask:'0000 0000 0000 0000', len:19, type:'num'}\" />\n      <input type=\"text\" required [(ngModel)]=\"card_name\" name=\"card_name\" placeholder=\"Tarjeta Habiente\" />\n      <div class=\"flex\">\n        <input type=\"text\" [(ngModel)]=\"card_date\" required placeholder=\"Fecha de Expiración\" [brmasker]=\"{mask:'00/00', len:5,type:'num'}\" />\n        <input type=\"text\" [(ngModel)]=\"card_cvc\" class=\"small\" required placeholder=\"CVC\" [brmasker]=\"{mask:'000', len:3, type:'num'}\"/>\n      </div>\n      <button class=\"red shadow\" (click)=\"submit()\" >\n        Proceder al pago\n      </button>\n    </div>\n    <!-- \n    <div class=\"form-wrapper\">\n      <form>\n\n        <div class=\"input-group\">\n          <input type=\"text\" required [(ngModel)]=\"card_number\" name=\"card_number\"/>\n          <label>Número de Tarjeta</label>\n        </div>\n\n        <div class=\"input-group\">\n          <input type=\"text\" required [(ngModel)]=\"card_name\" name=\"card_name\"/>\n          <label>Tarjeta Habiente</label>\n        </div>\n\n        <span class=\"col\">\n          <div class=\"input-group exp\">\n            <input type=\"text\" required />\n            <label>Fecha de Expiración</label>\n          </div>\n\n          <div class=\"input-group cvc\">\n            <input type=\"text\" required />\n            <label>CVC</label>\n          </div>\n        </span>\n\n        <button class=\"red shadow sendbottom\" routerLink=\"/prize\">\n          Proceder al pago\n        </button>\n\n      </form>\n    </div> -->\n\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content color=\"primary\">\n  <div class=\"header\">\n    <div class=\"left\" routerLink=\"/cart\" routerDirection=\"back\">\n      <ion-icon name=\"chevron-back-outline\"></ion-icon>\n      <p>Regresar</p>\n    </div>\n\n    <div class=\"right\">\n      <!-- <p>Regresar</p>\n      <ion-icon name=\"chevron-back-outline\"></ion-icon> -->\n    </div>\n  </div>\n\n  <ion-slides pager=\"true\" [options]=\"slideOpts\">\n    <ion-slide class=\"code-wrapper ion-padding\" *ngFor=\"let card of payments\">\n      <div>\n        <div class=\"credit-cards\">\n          <img src=\"assets/credit_card.png\" alt=\"\">\n          <p class=\"name\" *ngIf=\"card.billing_details\">{{card.billing_details.name}}</p>\n          <p class=\"number\">••••  ••••  •••• {{card.card.last4}}</p>\n        </div>\n\n        <div class=\"form\">\n          <input type=\"text\" disabled [value]=\"'••••  ••••  ••••  '+card.card.last4\"/>\n          <input type=\"text\" disabled [value]=card.billing_details.name/>\n          <div class=\"flex\">\n            <input type=\"text\" disabled [value]=\"card.card.exp_month+'/'+card.card.exp_year\"/>\n            <input type=\"text\" class=\"small\" disabled value=\"•••\"/>\n          </div>\n          <button class=\"red shadow\" (click)=\"pay(card.id)\">\n            Proceder al pago\n          </button>\n        </div>\n      </div>\n    </ion-slide>\n\n\n    <ion-slide class=\"code-wrapper ion-padding\">\n      <div>\n        <div class=\"credit-cards\">\n          <img src=\"assets/credit_card.png\" alt=\"\">\n          <p class=\"name\">{{card_name}}</p>\n          <p class=\"number\">{{card_number}}</p>\n        </div>\n\n        <div class=\"form\">\n          <input type=\"text\" required [(ngModel)]=\"card_number\" name=\"card_number\" placeholder=\"Número de tarjeta\"\n            [brmasker]=\"{mask:'0000 0000 0000 0000', len:19, type:'num'}\" />\n          <input type=\"text\" required [(ngModel)]=\"card_name\" name=\"card_name\" placeholder=\"Tarjeta Habiente\" />\n          <div class=\"flex\">\n            <input type=\"text\" [(ngModel)]=\"card_date\" required placeholder=\"Fecha de Expiración\"\n              [brmasker]=\"{mask:'00/00', len:5,type:'num'}\" />\n            <input type=\"text\" [(ngModel)]=\"card_cvc\" class=\"small\" required placeholder=\"CVC\"\n              [brmasker]=\"{mask:'000', len:3, type:'num'}\" />\n          </div>\n          <button class=\"red shadow\" (click)=\"add_pm()\">\n           Agregar y pagar\n          </button>\n        </div>\n      </div>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>");
 
 /***/ }),
 
@@ -736,15 +736,16 @@ let PaymentPage = class PaymentPage {
         this.userService = userService;
         this.loadingController = loadingController;
         this.router = router;
-        this.card_name = "Carlos Aguirre Orozco";
-        this.card_number = "4242 4242 4242 4242";
-        this.card_date = "02/22";
-        this.card_cvc = "123";
+        this.card_name = "";
+        this.card_number = "";
+        this.card_date = "";
+        this.card_cvc = "";
+        this.payments = [];
         this.order = [];
         this.stripe.setPublishableKey(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].tiangoPK);
     }
     ngOnInit() {
-        let cart = JSON.parse('{"1":{"id":1,"price":50,"title":"Melón","image_path":"https://www.superama.com.mx/Content/images/products/img_large/0000000004050L.jpg","cart":3},"items":6,"price":465,"0ddb37dd-6bb4-4aa6-8b03-ae434e21e288":{"location_id":"2","image_path":"https://bills-tec-ccm-2020-cloud.s3.amazonaws.com/1603932745183.jpg","description":"Un plátano gordito y bien macho.","id":"0ddb37dd-6bb4-4aa6-8b03-ae434e21e288","price":"105","title":"Plátano","cart":3}}');
+        let cart = JSON.parse(localStorage.getItem("cart"));
         for (let key of Object.entries(cart)) {
             //@ts-ignore
             if (key[1].location_id != undefined) {
@@ -753,44 +754,53 @@ let PaymentPage = class PaymentPage {
                 this.order.push({ id: key[1].id, price: key[1].price, quantity: key[1].cart });
             }
         }
+        let userId = JSON.parse(localStorage.getItem("user")).id;
+        this.userService.getPM(userId).subscribe((res) => {
+            console.log(res);
+            this.payments = res.methods;
+        });
         console.log(this.order);
     }
-    submit() {
+    pay(card_id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const loading = yield this.loadingController.create({
                 cssClass: "my-custom-class",
-                message: "Procesando el pago",
+                message: "Realizando pago",
+            });
+            yield loading.present();
+            console.log(card_id);
+            let userId = JSON.parse(localStorage.getItem("user")).id;
+            this.userService.createOrder(this.order, card_id, userId).subscribe((res) => {
+                console.log(res);
+                loading.dismiss();
+                localStorage.setItem("cart", undefined);
+                this.router.navigateByUrl("/prize");
+            });
+        });
+    }
+    add_pm() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const loading = yield this.loadingController.create({
+                cssClass: "my-custom-class",
+                message: "Validando tarjeta",
             });
             yield loading.present();
             let card = {
-                number: this.card_number.replace(/\s/g, ""),
-                expMonth: parseInt(this.card_date[0] + this.card_date[1]),
-                expYear: parseInt("20" + this.card_date[3] + this.card_date[4]),
-                cvc: this.card_cvc,
+                card_details: {
+                    number: this.card_number.replace(/\s/g, ""),
+                    exp_month: parseInt(this.card_date[0] + this.card_date[1]),
+                    exp_year: parseInt("20" + this.card_date[3] + this.card_date[4]),
+                    cvc: this.card_cvc,
+                },
+                billing_details: {
+                    name: this.card_name,
+                },
             };
-            console.log(card);
-            let userId = JSON.parse(localStorage.getItem("user")).id;
-            console.log(userId);
-            this.userService.addPM("", userId).subscribe((res) => {
+            this.userService.addPM(card).subscribe((res) => {
                 let pm = res.id;
-                let order = [
-                    {
-                        id: "id",
-                        price: 300.0,
-                        quantity: 3,
-                    },
-                ];
-                this.userService.createOrder(this.order, pm, userId).subscribe((res) => {
-                    console.log(res);
-                    loading.dismiss();
-                    localStorage.setItem("cart", undefined);
-                    this.router.navigateByUrl("/prize");
-                });
+                loading.dismiss();
+                this.pay(pm);
             });
-            //   this.stripe
-            //     .createCardToken(card)
-            //     .then((token) => console.log(token))
-            //     .catch((error) => console.error(error));
         });
     }
 };

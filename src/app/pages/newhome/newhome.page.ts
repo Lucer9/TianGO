@@ -51,7 +51,7 @@ export class NewhomePage implements OnInit {
         this.productService.getProducts(params.id).subscribe((res: any) => {
           console.log(res);
 
-          if (localStorage.getItem("cart") != undefined) {
+          if (localStorage.getItem("cart") != undefined && localStorage.getItem("cart") != "undefined") {
             this.cart = JSON.parse(localStorage.getItem("cart"));
           }
           for (let p of res.products) {

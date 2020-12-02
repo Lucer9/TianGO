@@ -35,25 +35,30 @@ export class CodePage implements OnInit {
       (error) => {
         console.log(error);
         if (error.error.error.code == "UsernameExistsException") {
-          this.loginPhone();
+          this.resendCode();
+          // this.router.navigateByUrl("/verificate");
         }
       }
     );
     // this.router.navigateByUrl("/verificate");
   }
 
-  loginPhone() {
-    console.log("trying login");
-    this.userService.login("+52" + this.tel).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        console.log(error);
-        if (error.error.error.code == "UserNotConfirmedException") {
-          this.router.navigateByUrl("/verificate");
+  resendCode() {
+    this.userService.getAllUsers().subscribe((res: any) => {
+      for (let u of res.users) {
+        if (u.phone.S == "+52" + this.tel) {
+          let user = {
+            username: u.username.S,
+            id: u.id.S,
+          };
+          localStorage.setItem("user", JSON.stringify(user));
+          this.userService.resendCode(user).subscribe((res) => {
+            this.router.navigateByUrl("/verificate");
+          });
         }
       }
-    );
+    });
   }
+
+  
 }

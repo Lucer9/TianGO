@@ -146,7 +146,7 @@ let CameraPage = class CameraPage {
         this.text = '{"image_path":"https://bills-tec-ccm-2020-cloud.s3.amazonaws.com/1603852416615.jpeg","description":"Tacos de pastor","id":"3a987608-861a-4dac-8041-1d1c523a790d","price":"10","title":"Tacos Velez"}';
     }
     ngOnInit() {
-        if (localStorage.getItem("cart") != undefined) {
+        if (localStorage.getItem("cart") != undefined && localStorage.getItem("cart") != "undefined") {
             this.cart = JSON.parse(localStorage.getItem("cart"));
         }
         this.route.params.subscribe((params) => {

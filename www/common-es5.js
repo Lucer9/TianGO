@@ -223,18 +223,25 @@
       var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common/http */
       "tk/3");
+      /* harmony import */
+
+
+      var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! src/environments/environment */
+      "AytR");
 
       var UsersService = /*#__PURE__*/function () {
         function UsersService(http) {
           _classCallCheck(this, UsersService);
 
           this.http = http;
-          this.endpoint = "http://localhost:8080";
+          this.endpoint = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint;
         }
 
         _createClass(UsersService, [{
           key: "register",
           value: function register(phone) {
+            src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endpoint;
             return this.http.post("".concat(this.endpoint, "/users/register"), {
               username: phone,
               phone: phone,
@@ -261,18 +268,48 @@
             });
           }
         }, {
-          key: "addPM",
-          value: function addPM(pmId, userId) {
-            return this.http.post("".concat(this.endpoint, "/methods"), {
-              payment_method_id: "pm_card_mx",
-              user_id: userId
+          key: "resendCode",
+          value: function resendCode(user) {
+            return this.http.post("".concat(this.endpoint, "/users/code"), {
+              user: {
+                id: user.id
+              }
             });
+          }
+        }, {
+          key: "getAllUsers",
+          value: function getAllUsers() {
+            return this.http.get("".concat(this.endpoint, "/users/all"));
+          }
+        }, {
+          key: "getUser",
+          value: function getUser(id) {
+            return this.http.get("".concat(this.endpoint, "/users/").concat(id));
+          }
+        }, {
+          key: "getPM",
+          value: function getPM(userId) {
+            console.log("".concat(this.endpoint, "/methods?user_id=").concat(userId));
+            return this.http.get("".concat(this.endpoint, "/methods?user_id=").concat(userId));
+          }
+        }, {
+          key: "addPM",
+          value: function addPM(pm) {
+            return this.http.post("".concat(this.endpoint, "/methods/create"), Object.assign({}, pm));
           }
         }, {
           key: "createOrder",
           value: function createOrder(products, payment_method, user_id) {
             return this.http.post("".concat(this.endpoint, "/orders"), {
               payment_method: payment_method,
+              user_id: user_id,
+              products: products
+            });
+          }
+        }, {
+          key: "createOrderPoints",
+          value: function createOrderPoints(products, user_id) {
+            return this.http.post("".concat(this.endpoint, "/orders/points"), {
               user_id: user_id,
               products: products
             });
